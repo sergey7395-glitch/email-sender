@@ -38,7 +38,7 @@ def send_email(req: EmailRequest):
         msg["From"] = f"{os.getenv('SENDER_NAME','Стальная защита')} <{os.getenv('YANDEX_EMAIL')}>"
         msg["To"] = req.to
         msg.attach(MIMEText(req.html, "html", "utf-8"))
-        with smtplib.SMTP("smtp.yandex.ru", 587) as s:
+        with smtplib.SMTP("smtp.yandex.ru", 25) as s:
             s.ehlo()
             s.starttls()
             s.login(os.getenv("YANDEX_EMAIL"), os.getenv("YANDEX_PASSWORD"))
