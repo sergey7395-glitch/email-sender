@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: email-sender
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn main:app --host 0.0.0.0 --port 8080
+    envVars:
+      - key: YANDEX_EMAIL
+        sync: false
+      - key: YANDEX_PASSWORD
+        sync: false
+      - key: SENDER_NAME
+        sync: false
