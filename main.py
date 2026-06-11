@@ -1,4 +1,4 @@
-import os, smtplib
+import os, smtplib, requests
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from fastapi import FastAPI
@@ -8,10 +8,27 @@ from pydantic import BaseModel
 app = FastAPI()
 app.add_middleware(CORSMiddleware, allow_origins=["*"], allow_methods=["*"], allow_headers=["*"])
 
+class ImageRequest(BaseModel):
+    image_base64: str
+
 class EmailRequest(BaseModel):
     to: str
     subject: str
     html: str
+
+@app.post("/upload-image")
+def upload_image(req: ImageRequest):
+    try:
+        response = requests.post(
+            "https://api.imgbb.com/1/upload",
+            data={"key": "0ef83fe08f2a45469fd210b8d071c3e2", "image": req.image_base64}
+        )
+        data = response.json()
+        if data.get("success"):
+            return {"success": True, "url": data["data"]["url"]}
+        raise Exception(str(data))
+    except Exception as e:
+        return {"success": False, "error": str(e)}
 
 @app.post("/send-email")
 def send_email(req: EmailRequest):
