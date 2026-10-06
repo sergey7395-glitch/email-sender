@@ -63,3 +63,4 @@
 | 5.10 | vc.ru | https://vc.ru/id6094884/3177595-kak-sdelat-seriyu-kartochek-dlya-wildberries-i-ozon-po-odnomu-foto-poshagovo-i-s-proverkoi-oshibok-neiroseti | нет (коммерческий аккаунт без Pro) | теги не добавлялись |
 | 5.10 | Дзен | https://dzen.ru/a/asQNveHRxXASupib | проверить 8–10.10 | канал про двери |
 | 6.10 | Teletype | https://teletype.in/@sergey7395/zvpSIXTzcPj | проверить 9–11.10 | **ссылка на сайт без `nofollow` (проверено в коде страницы), нет `noindex`**, canonical верный; хэштеги `#маркетплейсы #wildberries #ozon #карточкатовара #нейросети` |
+| 6.10 | TenChat | https://tenchat.ru/media/6199534-dizayner-konstruktor-ili-neyroset-chem-delat-kartochki-dlya-marketpleysa | проверить 9–11.10 | страница открывается без входа, в коде нет `noindex` и `nofollow`; текст со ссылкой на сайт отдаётся в данных страницы (как отрисована ссылка, из кода не видно); превью-картинка задана; заголовок 73 знака |
