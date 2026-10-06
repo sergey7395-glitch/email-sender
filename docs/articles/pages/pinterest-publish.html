@@ -64,7 +64,7 @@ button{font:inherit;cursor:pointer}
   <p style="margin:0;font-size:14px;color:var(--muted)">Или впишите свой товар. Название так, как его ищут: «кофеварка», «электробритва».</p>
   <label style="font-size:14px">Товар (как ищут)<input id="inKind" style="display:block;width:100%;padding:8px;border:1px solid var(--line);border-radius:8px;background:var(--surface);color:var(--fg);font:inherit"></label>
   <label style="font-size:14px">Что обычно показывают на карточках (через запятую)<input id="inWhat" style="display:block;width:100%;padding:8px;border:1px solid var(--line);border-radius:8px;background:var(--surface);color:var(--fg);font:inherit"></label>
-  <label style="font-size:14px">Вариант названия<select id="inPat" style="display:block;width:100%;padding:8px;border:1px solid var(--line);border-radius:8px;background:var(--surface);color:var(--fg);font:inherit"><option value="0">Инфографика карточки товара …</option><option value="1">Дизайн карточки товара … для Wildberries</option><option value="2">Карточка товара … для Ozon: пример серии</option></select></label>
+  <label style="font-size:14px">Вариант названия<select id="inPat" style="display:block;width:100%;padding:8px;border:1px solid var(--line);border-radius:8px;background:var(--surface);color:var(--fg);font:inherit"><option value="0">Инфографика карточки товара …</option><option value="1">Дизайн карточки товара …</option><option value="2">Карточка товара …: дизайн и инфографика</option></select></label>
   <label style="font-size:14px">Метка товара для ссылки (латиницей)<input id="inSlug" style="display:block;width:100%;padding:8px;border:1px solid var(--line);border-radius:8px;background:var(--surface);color:var(--fg);font:inherit"></label>
   </div>
 
@@ -89,7 +89,7 @@ function el(id){return document.getElementById(id)}
 var done={};try{done=JSON.parse(localStorage.getItem('pinsDone')||'{}')}catch(e){}
 function save(){try{localStorage.setItem('pinsDone',JSON.stringify(done))}catch(e){}}
 var cur=0;
-function pats(k,p){return [ 'Инфографика карточки товара '+k,'Дизайн карточки товара '+k+' для Wildberries','Карточка товара '+k+' для Ozon: пример серии' ][p]}
+function pats(k,p){return [ 'Инфографика карточки товара '+k,'Дизайн карточки товара '+k,'Карточка товара '+k+': дизайн и инфографика' ][p]}
 function build(){
   var k=el('inKind').value.trim(),w=el('inWhat').value.trim(),p=+el('inPat').value,sl=el('inSlug').value.trim()||tr(k);
   var title=pats(k,p);
@@ -97,7 +97,7 @@ function build(){
   var alt='Карточка товара для маркетплейса: '+k;
   var link='https://absolutecard.ru/?utm_source=pinterest&utm_medium=pin&utm_campaign=cards&utm_content='+sl;
   el('oTitle').textContent=title;el('oDesc').textContent=desc;el('oAlt').textContent=alt;el('oLink').textContent=link;
-  var G=['Инфографика','Дизайн','Инфографика для маркетплейсов'],P=['Карточки товара для Wildberries','Карточки товара для Wildberries','Карточки товара для Ozon'];var extra=[B.main,G[p],P[p]];var c=(D[cur]&&D[cur].kind===k)?D[cur].cat:'';if(c)extra.push(c);
+  var G=['Инфографика','Дизайн','Инфографика для маркетплейсов'],P=['Карточки товара для Wildberries','Карточки товара для Ozon'];var extra=[B.main,G[p],P[cur%2]];var c=(D[cur]&&D[cur].kind===k)?D[cur].cat:'';if(c)extra.push(c);
   el('outBoards').innerHTML='<b>Сохранить пин в доски:</b> '+extra.map(function(x){return '«'+x+'»'}).join(', ')+'. Первую выберите при публикации, остальные добавьте кнопкой «Сохранить» на готовом пине.';
   el('outCard').textContent=D[cur]&&D[cur].kind===k?'Картинка: карточка «'+D[cur].name+'» из галереи админки (главная, скачать оригинал).':'Картинка: главная карточка этого товара из галереи админки.';
 }
