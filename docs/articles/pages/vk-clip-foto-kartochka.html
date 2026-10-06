@@ -77,7 +77,7 @@ select{padding:8px;border:1px solid var(--line);border-radius:8px;background:var
       <h2>Соберите видео из картинок</h2>
       <p>Нажмите кнопку и выберите картинки в таком порядке: фото зарядки на листе бумаги, её карточка, фото принтера, <b>все шесть карточек принтера</b>, в самом конце новогодняя карточка кофеварки. Только ваши товары, карточки лучше без водяного знака. Порядок меняется стрелками.</p>
       <p>Надпись, оставленная пустой, повторяет надпись предыдущего кадра: так «Серия из 6 карточек» останется на экране все шесть карточек. Чтобы убрать надпись совсем, впишите «-». Время каждого кадра выбирается справа: карточки серии по умолчанию идут по 1 секунде, кадры с надписью по 3. В конце сам добавится кадр с адресом сайта.</p>
-      <div class="row"><label class="pick">Выбрать картинки<input id="pick" type="file" accept="image/*" multiple></label><span class="hint" id="pickHint"></span></div>
+      <div class="row"><label class="pick">Выбрать картинки<input id="pick" type="file" accept="image/*" multiple></label><button class="mini" type="button" id="clear" style="padding:0 14px">Очистить всё</button><span class="hint" id="pickHint"></span></div>
       <div class="frames" id="frames"></div>
       <div class="row"><label style="font-size:14px;display:flex;gap:8px;align-items:center"><input type="checkbox" id="endcard" checked> Добавить в конце кадр с адресом сайта</label></div>
       <div class="row"><button class="copy big" type="button" id="build" disabled>Собрать клип</button></div>
@@ -128,7 +128,34 @@ try{if(window.claude&&window.claude.use){window.claude.use('downloads').then(fun
 function defText(i){return DEF[i]||''}
 function ownText(f){var t=(f.text||'').trim();return t!==''&&t!=='-'}
 function refresh(){frames.forEach(function(f,i){if(!f.edited)f.text=defText(i);if(!f.durEdited)f.dur=ownText(f)?3:1})}
-function loadImg(file){return new Promise(function(res,rej){var u=URL.createObjectURL(file),im=new Image();im.onload=function(){res({img:im,url:u,text:'',edited:false,dur:3,durEdited:false})};im.onerror=function(){rej()};im.src=u})}
+function loadImg(file){return new Promise(function(res,rej){var u=URL.createObjectURL(file),im=new Image();im.onload=function(){res({img:im,url:u,blob:file,text:'',edited:false,dur:3,durEdited:false})};im.onerror=function(){rej()};im.src=u})}
+
+var idb=null,saveT=null;
+function openDB(){return new Promise(function(res){
+  try{var rq=indexedDB.open('clipmaker',1);
+    rq.onupgradeneeded=function(){rq.result.createObjectStore('s',{keyPath:'k'})};
+    rq.onsuccess=function(){res(rq.result)};rq.onerror=function(){res(null)};
+  }catch(e){res(null)}})}
+function persist(){
+  if(!idb)return;clearTimeout(saveT);
+  saveT=setTimeout(function(){try{
+    var tx=idb.transaction('s','readwrite');
+    tx.objectStore('s').put({k:'state',end:el('endcard').checked,frames:frames.map(function(f){return {blob:f.blob,text:f.text,edited:f.edited,dur:f.dur,durEdited:f.durEdited}})});
+  }catch(e){}},300);
+}
+function restore(){
+  openDB().then(function(db){
+    idb=db;if(!db)return;
+    var rq=db.transaction('s').objectStore('s').get('state');
+    rq.onsuccess=function(){
+      var st=rq.result;if(!st||!st.frames||!st.frames.length)return;
+      el('endcard').checked=st.end!==false;
+      Promise.all(st.frames.map(function(d){return loadImg(d.blob).then(function(f){f.text=d.text||'';f.edited=!!d.edited;f.dur=d.dur||3;f.durEdited=!!d.durEdited;return f})})).then(function(list){
+        if(frames.length)return;frames=list;render();preview();
+      },function(){});
+    };
+  });
+}
 function items(){
   var a=frames.slice(),prev='';
   if(el('endcard').checked)a.push({end:true,dur:3});
@@ -187,6 +214,7 @@ function scene(t,list){
 function preview(){if(frames.length)scene(0);else{ctx.fillStyle='#101816';ctx.fillRect(0,0,W,H)}}
 
 function state(){
+  persist();
   el('build').disabled=busy||frames.length<2;
   if(!busy){el('status').textContent=frames.length<2?'Сначала выберите картинки: нужно минимум две.':'Кадров: '+frames.length+', видео будет '+(Math.round(total()*10)/10)+' секунд. Нажмите «Собрать клип».'}
 }
@@ -212,6 +240,7 @@ function render(){
   state();
 }
 el('endcard').addEventListener('change',function(){state()});
+el('clear').addEventListener('click',function(){frames=[];render();preview();state()});
 el('pick').addEventListener('change',function(e){
   var files=Array.prototype.slice.call(e.target.files||[]);if(!files.length)return;
   el('pickHint').textContent='Загружаю…';
@@ -277,5 +306,6 @@ document.querySelectorAll('button[data-for]').forEach(function(b){
     if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(function(){flash(b,h,true)},function(){flash(b,h,fb(n))})}else{flash(b,h,fb(n))}});
 });
 preview();
+restore();
 })();
 </script>
