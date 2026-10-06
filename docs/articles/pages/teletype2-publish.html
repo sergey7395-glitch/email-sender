@@ -1,0 +1,177 @@
+<title>Статья 2 для Teletype</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: three short steps on top, then the whole article as one block with a single copy button. */
+:root{
+  --bg:#f3f5f4; --surface:#ffffff; --fg:#1c2623; --muted:#5d6a66; --line:#d9dfdc;
+  --accent:#0f6b5c; --accent-fg:#ffffff; --accent-soft:#e1efeb; --warn:#8a5a00; --warn-soft:#fbf0d9; --ok:#1f7a45;
+  --block:#eef2f0;
+  --sans:'IBM Plex Sans',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+  --mono:'IBM Plex Mono',ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#111917; --surface:#18221f; --fg:#e6ece9; --muted:#97a6a1; --line:#2a3834;
+  --accent:#4cc3ac; --accent-fg:#06211b; --accent-soft:#1d3530; --warn:#e7b85a; --warn-soft:#352b14; --ok:#5fcf8c; --block:#1f2c28; color-scheme:dark;}}
+:root[data-theme="dark"]{
+  --bg:#111917; --surface:#18221f; --fg:#e6ece9; --muted:#97a6a1; --line:#2a3834;
+  --accent:#4cc3ac; --accent-fg:#06211b; --accent-soft:#1d3530; --warn:#e7b85a; --warn-soft:#352b14; --ok:#5fcf8c; --block:#1f2c28; color-scheme:dark;}
+body{background:var(--bg);color:var(--fg);font-family:var(--sans);font-size:16px;line-height:1.55;padding-inline:16px;padding-block:24px 56px}
+.wrap{max-width:760px;margin-inline:auto;display:flex;flex-direction:column;gap:16px}
+h1.page{font-size:24px;line-height:1.25;margin:0;font-weight:600;text-wrap:balance}
+.lead{margin:0;color:var(--muted);max-width:62ch}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px;display:flex;flex-direction:column;gap:10px}
+.step{display:flex;gap:12px;align-items:flex-start}
+.num{flex:0 0 auto;width:28px;height:28px;border-radius:50%;background:var(--accent);color:var(--accent-fg);font-family:var(--mono);font-weight:500;font-size:14px;display:grid;place-items:center}
+.step h2{margin:0;font-size:17px;line-height:1.3;font-weight:600;padding-top:2px}
+.step p{margin:4px 0 0;font-size:15px;color:var(--muted)}
+.stepbody{flex:1;min-width:0;display:flex;flex-direction:column;gap:8px}
+.box{background:var(--block);border:1px solid var(--line);border-radius:8px;padding:10px 12px;font-size:15px;overflow-wrap:anywhere;white-space:pre-wrap}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+button{font:inherit;cursor:pointer}
+.copy{background:var(--accent);color:var(--accent-fg);border:0;border-radius:8px;padding:9px 16px;font-weight:600;font-size:15px;min-height:40px}
+.copy.big{font-size:17px;padding:13px 22px;min-height:50px}
+.copy.ok{background:var(--ok);color:#fff}
+.copy:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.hint{font-size:13px;color:var(--warn)}
+.note{background:var(--warn-soft);border-radius:8px;padding:10px 12px;font-size:14px}
+.note b{font-weight:600}
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:3;background:var(--bg);padding-block:8px;display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.paper{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:20px 22px}
+#article{font-family:Georgia,'Times New Roman',serif;font-size:17px;line-height:1.65;color:var(--fg)}
+#article h2{font-family:var(--sans);font-size:21px;line-height:1.3;margin:26px 0 10px;font-weight:600}
+#article p{margin:0 0 14px}
+#article ol{margin:0 0 14px;padding-left:24px}
+#article li{margin-bottom:6px}
+#article a{color:var(--accent)}
+#article .pic{font-family:var(--sans);font-size:14px;color:var(--warn);background:var(--warn-soft);padding:6px 10px;border-radius:6px;margin:0 0 14px;display:block}
+.tags{display:flex;gap:6px;flex-wrap:wrap}
+.tag{font-family:var(--mono);font-size:13px;background:var(--block);border:1px solid var(--line);border-radius:6px;padding:2px 8px}
+@media (prefers-reduced-motion: reduce){*{transition:none!important}}
+</style>
+
+<main class="wrap">
+  <h1 class="page">Вторая статья для Teletype: вставить целиком за четыре шага</h1>
+  <p class="lead">Новая тема, чтобы не дублировать предыдущую: как сфотографировать товар на телефон. Teletype даёт обычную ссылку без nofollow, поэтому здесь полезно иметь несколько разных статей.</p>
+
+  <div class="card">
+    <div class="step"><div class="num">1</div><div class="stepbody">
+      <h2>Откройте Teletype</h2>
+      <p>Перейдите по ссылке (вы уже зарегистрированы) и начните новую статью. Дальше возвращайтесь на эту страницу.</p>
+      <div class="row"><a class="copy" style="text-decoration:none;display:inline-block" href="https://teletype.in/" target="_blank" rel="noopener">Открыть teletype.in</a></div>
+    </div></div>
+  </div>
+
+  <div class="card">
+    <div class="step"><div class="num">2</div><div class="stepbody">
+      <h2>Заголовок и подзаголовок</h2>
+      <p>Заголовок вставьте в строку заголовка:</p>
+      <div class="box" id="title">Как сфотографировать товар на телефон, чтобы получить хорошие карточки для Wildberries и Ozon</div>
+      <div class="row"><button class="copy" type="button" data-for="title">Копировать заголовок</button><span class="hint"></span></div>
+      <p>Если есть строка подзаголовка, вставьте в неё (если нет, пропустите):</p>
+      <div class="box" id="sub">Семь простых правил: свет, фон, ракурс и что не нужно делать. Студия и дорогая камера не нужны.</div>
+      <div class="row"><button class="copy" type="button" data-for="sub">Копировать подзаголовок</button><span class="hint"></span></div>
+    </div></div>
+  </div>
+
+  <div class="card">
+    <div class="step"><div class="num">3</div><div class="stepbody">
+      <h2>Текст статьи</h2>
+      <p>Нажмите на поле текста, удалите старое (Ctrl+A, Delete), нажмите кнопку ниже и вставьте (Ctrl+V). Там, где стоит жёлтая строка «Вставьте картинку», загрузите картинки и удалите эту строку.</p>
+      <div class="row"><button class="copy big" type="button" id="copyArticle">Скопировать всю статью</button><span class="hint" id="articleHint"></span></div>
+    </div></div>
+  </div>
+
+  <div class="card">
+    <div class="step"><div class="num">4</div><div class="stepbody">
+      <h2>Хэштеги и публикация</h2>
+      <p>Добавьте хэштеги:</p>
+      <div class="box" id="tags">#маркетплейсы #wildberries #ozon #карточкатовара #фототовара</div>
+      <div class="row"><button class="copy" type="button" data-for="tags">Копировать хэштеги</button><span class="hint"></span></div>
+      <p>Если ссылка на сайт не стала кликабельной, выделите слова «собрать главную карточку», нажмите Ctrl+K и вставьте <span style="font-family:var(--mono);overflow-wrap:anywhere">https://absolutecard.ru/?utm_source=teletype&amp;utm_medium=article&amp;utm_campaign=foto_tovara</span>. Прочитайте статью сверху вниз, опубликуйте и пришлите мне ссылку.</p>
+    </div></div>
+  </div>
+
+  <div class="bar"><span class="lead">Вся статья:</span><button class="copy" type="button" id="copyArticle2">Скопировать всю статью</button><span class="hint" id="articleHint2"></span></div>
+
+  <div class="paper"><div id="article">
+<p>Хорошая карточка начинается с фото. Не обязательно студийного: для серии карточек по одному снимку хватает телефона и десяти минут. Но есть несколько правил, от которых результат заметно зависит, неважно, делает карточки дизайнер, конструктор или нейросеть.</p>
+
+<h2>1. Товар целиком в кадре</h2>
+<p>Самая частая ошибка: край товара обрезан или закрыт рукой. По такому фото невозможно ни нарисовать карточку, ни показать товар покупателю. Оставьте вокруг товара немного свободного места со всех сторон.</p>
+
+<h2>2. Свет у окна, без вспышки</h2>
+<p>Лучший свет для телефона даёт окно днём. Поставьте товар рядом с ним, чтобы свет падал сбоку. Вспышка даёт жёсткие тени и пересвеченные пятна, поэтому её лучше выключить.</p>
+
+<h2>3. Блики на глянце</h2>
+<p>Глянцевые поверхности (пластик, металл, стекло) любят блики. Если на фото видно белое пятно, не пытайтесь убрать его в редакторе: просто сдвиньте товар или себя на шаг, чуть поверните его или закройте источник блика листом бумаги.</p>
+
+<h2>4. Простой фон</h2>
+<p>Идеальный белый фон не обязателен. Достаточно, чтобы рядом не было лишних предметов, которые путают контур товара. Наш принтер из примера снят на фоне обоев и с краешком папки сбоку, и серия из него получилась нормальная.</p>
+<span class="pic">Вставьте картинку: фото принтера с телефона (с обоями) и рядом жёлтая главная карточка. Эту жёлтую строку удалите.</span>
+
+<h2>5. Ракурс: спереди и чуть сверху</h2>
+<p>Так видно и переднюю часть, и верх, то есть основные детали. Снимайте с расстояния в пару шагов и приближайте уже на экране: снимок вплотную искажает пропорции.</p>
+
+<h2>6. Чистый товар</h2>
+<p>Протрите пыль и отпечатки, снимите защитные плёнки и ценники, если они не нужны покупателю. На карточке всё это будет видно и в увеличенном виде.</p>
+
+<h2>7. Без фильтров, рамок и надписей</h2>
+<p>Не добавляйте на фото фильтры, рамки, логотипы, свои надписи и коллажи. Цвет товара должен быть настоящим, а все надписи и оформление добавляются уже на карточке.</p>
+
+<h2>Название товара</h2>
+<p>К фото нужно название. Простого достаточно: «чайник», «кофеварка», «принтер лазерный». Если у товара есть модель, добавьте её: по модели покупатели ищут и сравнивают.</p>
+
+<h2>Проверка перед загрузкой</h2>
+<ol>
+<li>Откройте фото на экране и приблизьте края: товар должен быть резким.</li>
+<li>Убедитесь, что цвет похож на настоящий: сравните с товаром в руках.</li>
+<li>Проверьте, что товар виден целиком и ничего не обрезано.</li>
+</ol>
+
+<h2>Что дальше</h2>
+<p>Я делаю сервис Cardroom: по такому фото и названию он собирает главную карточку примерно за две минуты, бесплатно и с водяным знаком. Если понравилось, можно скачать без знака или заказать серию из шести карточек в одном стиле. Посмотреть, как это выглядит на вашем товаре: <a href="https://absolutecard.ru/?utm_source=teletype&amp;utm_medium=article&amp;utm_campaign=foto_tovara">собрать главную карточку</a>.</p>
+<p>Какой товар вам снимать сложнее всего: глянцевый, прозрачный, мелкий? Напишите в комментариях.</p>
+  </div></div>
+</main>
+
+<script>
+(function(){
+function sel(node){var r=document.createRange();r.selectNodeContents(node);var s=window.getSelection();s.removeAllRanges();s.addRange(r)}
+function flash(btn,hint,ok){
+  if(ok){var t=btn.dataset.t||btn.textContent;btn.dataset.t=t;btn.textContent='Скопировано ✓';btn.classList.add('ok');if(hint)hint.textContent='';setTimeout(function(){btn.textContent=t;btn.classList.remove('ok')},1800)}
+  else if(hint){hint.textContent='Текст выделен: нажмите Ctrl+C.'}
+}
+function copySelected(node){
+  sel(node);var ok=false;try{ok=document.execCommand('copy')}catch(e){}return ok;
+}
+function copyRich(node,btn,hint){
+  var html=node.innerHTML, plain=node.innerText;
+  var done=function(ok){flash(btn,hint,ok)};
+  if(navigator.clipboard&&window.ClipboardItem){
+    try{
+      var item=new ClipboardItem({'text/html':new Blob([html],{type:'text/html'}),'text/plain':new Blob([plain],{type:'text/plain'})});
+      navigator.clipboard.write([item]).then(function(){done(true)},function(){done(copySelected(node))});
+      return;
+    }catch(e){}
+  }
+  done(copySelected(node));
+}
+function copyPlain(node,btn,hint){
+  var text=node.innerText;
+  if(navigator.clipboard&&navigator.clipboard.writeText){
+    navigator.clipboard.writeText(text).then(function(){flash(btn,hint,true)},function(){flash(btn,hint,copySelected(node))});
+  }else{flash(btn,hint,copySelected(node))}
+}
+var art=document.getElementById('article');
+[['copyArticle','articleHint'],['copyArticle2','articleHint2']].forEach(function(p){
+  var b=document.getElementById(p[0]),h=document.getElementById(p[1]);
+  b.addEventListener('click',function(){copyRich(art,b,h)});
+});
+document.querySelectorAll('button[data-for]').forEach(function(b){
+  var node=document.getElementById(b.dataset.for),h=b.parentNode.querySelector('.hint');
+  b.addEventListener('click',function(){copyPlain(node,b,h)});
+});
+})();
+</script>
