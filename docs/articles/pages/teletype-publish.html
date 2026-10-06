@@ -1,0 +1,175 @@
+<title>Статья для Teletype</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: three short steps on top, then the whole article as one block with a single copy button. */
+:root{
+  --bg:#f3f5f4; --surface:#ffffff; --fg:#1c2623; --muted:#5d6a66; --line:#d9dfdc;
+  --accent:#0f6b5c; --accent-fg:#ffffff; --accent-soft:#e1efeb; --warn:#8a5a00; --warn-soft:#fbf0d9; --ok:#1f7a45;
+  --block:#eef2f0;
+  --sans:'IBM Plex Sans',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+  --mono:'IBM Plex Mono',ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#111917; --surface:#18221f; --fg:#e6ece9; --muted:#97a6a1; --line:#2a3834;
+  --accent:#4cc3ac; --accent-fg:#06211b; --accent-soft:#1d3530; --warn:#e7b85a; --warn-soft:#352b14; --ok:#5fcf8c; --block:#1f2c28; color-scheme:dark;}}
+:root[data-theme="dark"]{
+  --bg:#111917; --surface:#18221f; --fg:#e6ece9; --muted:#97a6a1; --line:#2a3834;
+  --accent:#4cc3ac; --accent-fg:#06211b; --accent-soft:#1d3530; --warn:#e7b85a; --warn-soft:#352b14; --ok:#5fcf8c; --block:#1f2c28; color-scheme:dark;}
+body{background:var(--bg);color:var(--fg);font-family:var(--sans);font-size:16px;line-height:1.55;padding-inline:16px;padding-block:24px 56px}
+.wrap{max-width:760px;margin-inline:auto;display:flex;flex-direction:column;gap:16px}
+h1.page{font-size:24px;line-height:1.25;margin:0;font-weight:600;text-wrap:balance}
+.lead{margin:0;color:var(--muted);max-width:62ch}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px;display:flex;flex-direction:column;gap:10px}
+.step{display:flex;gap:12px;align-items:flex-start}
+.num{flex:0 0 auto;width:28px;height:28px;border-radius:50%;background:var(--accent);color:var(--accent-fg);font-family:var(--mono);font-weight:500;font-size:14px;display:grid;place-items:center}
+.step h2{margin:0;font-size:17px;line-height:1.3;font-weight:600;padding-top:2px}
+.step p{margin:4px 0 0;font-size:15px;color:var(--muted)}
+.stepbody{flex:1;min-width:0;display:flex;flex-direction:column;gap:8px}
+.box{background:var(--block);border:1px solid var(--line);border-radius:8px;padding:10px 12px;font-size:15px;overflow-wrap:anywhere;white-space:pre-wrap}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+button{font:inherit;cursor:pointer}
+.copy{background:var(--accent);color:var(--accent-fg);border:0;border-radius:8px;padding:9px 16px;font-weight:600;font-size:15px;min-height:40px}
+.copy.big{font-size:17px;padding:13px 22px;min-height:50px}
+.copy.ok{background:var(--ok);color:#fff}
+.copy:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.hint{font-size:13px;color:var(--warn)}
+.note{background:var(--warn-soft);border-radius:8px;padding:10px 12px;font-size:14px}
+.note b{font-weight:600}
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:3;background:var(--bg);padding-block:8px;display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.paper{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:20px 22px}
+#article{font-family:Georgia,'Times New Roman',serif;font-size:17px;line-height:1.65;color:var(--fg)}
+#article h2{font-family:var(--sans);font-size:21px;line-height:1.3;margin:26px 0 10px;font-weight:600}
+#article p{margin:0 0 14px}
+#article ol{margin:0 0 14px;padding-left:24px}
+#article li{margin-bottom:6px}
+#article a{color:var(--accent)}
+#article .pic{font-family:var(--sans);font-size:14px;color:var(--warn);background:var(--warn-soft);padding:6px 10px;border-radius:6px;margin:0 0 14px;display:block}
+.tags{display:flex;gap:6px;flex-wrap:wrap}
+.tag{font-family:var(--mono);font-size:13px;background:var(--block);border:1px solid var(--line);border-radius:6px;padding:2px 8px}
+@media (prefers-reduced-motion: reduce){*{transition:none!important}}
+</style>
+
+<main class="wrap">
+  <h1 class="page">Статья для Teletype: вставить целиком за три шага</h1>
+  <p class="lead">Это третий отдельный текст: кейс на примере вашего принтера, не копия vc.ru и Дзена.</p>
+
+  <div class="card">
+    <div class="step"><div class="num">1</div><div class="stepbody">
+      <h2>Заголовок и подзаголовок</h2>
+      <p>Заголовок вставьте в строку заголовка:</p>
+      <div class="box" id="title">Из фото с телефона в серию карточек для маркетплейса: разбираем кейс с лазерным принтером</div>
+      <div class="row"><button class="copy" type="button" data-for="title">Копировать заголовок</button><span class="hint"></span></div>
+      <p>Если есть строка подзаголовка, вставьте в неё (если нет, пропустите):</p>
+      <div class="box" id="sub">Что было на входе, что получилось на выходе и что пришлось проверять руками.</div>
+      <div class="row"><button class="copy" type="button" data-for="sub">Копировать подзаголовок</button><span class="hint"></span></div>
+    </div></div>
+  </div>
+
+  <div class="card">
+    <div class="step"><div class="num">2</div><div class="stepbody">
+      <h2>Текст статьи</h2>
+      <p>Нажмите на поле под заголовком, удалите старое (Ctrl+A, Delete), нажмите кнопку ниже и вставьте (Ctrl+V). Там, где стоит жёлтая строка «Вставьте картинку», загрузите картинки и удалите эту строку.</p>
+      <div class="row"><button class="copy big" type="button" id="copyArticle">Скопировать всю статью</button><span class="hint" id="articleHint"></span></div>
+    </div></div>
+  </div>
+
+  <div class="card">
+    <div class="step"><div class="num">3</div><div class="stepbody">
+      <h2>Публикация</h2>
+      <p>Если просят обложку, возьмите главную карточку принтера. Прочитайте статью сверху вниз и опубликуйте. Потом пришлите мне ссылку.</p>
+    </div></div>
+  </div>
+
+  <div class="note"><b>Если подзаголовки не оформились:</b> выделите строку и выберите в панели стиль заголовка. <b>Если ссылка не стала кликабельной:</b> выделите слова «собрать главную карточку», нажмите Ctrl+K и вставьте <span style="font-family:var(--mono);overflow-wrap:anywhere">https://absolutecard.ru/?utm_source=teletype&amp;utm_medium=article&amp;utm_campaign=kejs_printer</span></div>
+
+  <div class="bar"><span class="lead">Вся статья:</span><button class="copy" type="button" id="copyArticle2">Скопировать всю статью</button><span class="hint" id="articleHint2"></span></div>
+
+  <div class="paper"><div id="article">
+<p>Иногда проще один раз показать, чем объяснять. Поэтому ниже один реальный пример без приукрашивания: один принтер, одно фото с телефона, шесть карточек для Wildberries и Ozon.</p>
+
+<h2>Что было на входе</h2>
+<p>Лазерный принтер Pantum P2500W стоит на столе. Фото сделано на телефон: на фоне обои, сбоку краешек зелёной папки, обычный комнатный свет. Ни студии, ни отдельного света, ни ретуши. К фото добавляется название товара, больше ничего не нужно.</p>
+<span class="pic">Вставьте картинку: фото принтера с телефона (с обоями). Эту жёлтую строку удалите.</span>
+
+<h2>Что получилось</h2>
+<p>Сначала сервис собирает главную карточку: это занимает около двух минут, она бесплатная и с водяным знаком. Понравилась, значит, дальше собирается серия из шести карточек в одном стиле. У каждой своя задача:</p>
+<ol>
+<li>Главная: название, тип принтера, подключение по Wi-Fi и USB, модель.</li>
+<li>Скорость печати: главное преимущество, показанное крупно.</li>
+<li>Управление: панель, лоток и индикаторы с подписями-стрелками.</li>
+<li>Где применяется: дом, учёба, небольшой офис.</li>
+<li>Размеры: габариты, вес, лотки.</li>
+<li>Расходники: картридж и бумага.</li>
+</ol>
+<span class="pic">Вставьте картинку: все шесть карточек принтера подряд (они встанут галереей). Эту жёлтую строку удалите.</span>
+
+<h2>Что пришлось поправить</h2>
+<p>На главной карточке сначала не было модели, а покупатели часто ищут и сравнивают принтеры именно по ней. Я попросил дописать название, P2500W, и карточку пересобрали: модель встала в плашку в стиле остальных надписей. Это одна просьба обычными словами, без работы в графическом редакторе.</p>
+
+<h2>Что стоит проверить на таком результате</h2>
+<p>Нейросеть хорошо справляется с оформлением, но слабее в мелочах, поэтому перед загрузкой на маркетплейс я проверяю руками:</p>
+<ol>
+<li>Все цифры: скорость, размеры, вес, ресурс картриджа. Сверяю с паспортом товара.</li>
+<li>Мелкие надписи: читаю каждую.</li>
+<li>Значки и иконки: иногда они подобраны не по смыслу, это видно только при внимательном осмотре.</li>
+<li>Читаемость на телефоне: большинство покупок идёт с мобильных.</li>
+</ol>
+<p>Требования площадок к размерам и надписям меняются, их надо сверять в кабинете продавца. Принимает ли карточки маркетплейс, решает его модерация.</p>
+
+<h2>Сколько это стоит</h2>
+<p>Главная карточка собирается бесплатно, на ней водяной знак. Скачать без знака 100 ₽. Серия из шести карточек 600 ₽, а если главная уже куплена, остальные пять 500 ₽. Деньги возвращаются, пока вы не скачали оплаченные карточки.</p>
+
+<h2>Что вынести из примера</h2>
+<ol>
+<li>Для хорошего результата хватает обычного фото с телефона и названия товара.</li>
+<li>Проверяйте, что на главной карточке есть название и модель: по ним товар ищут.</li>
+<li>Результат всегда смотрите глазами: цифры и надписи на вашей ответственности.</li>
+</ol>
+
+<h2>Попробовать</h2>
+<p>Я делаю сервис Cardroom, в нём этот принтер и собран. Главную карточку можно создать бесплатно и посмотреть, что получится: <a href="https://absolutecard.ru/?utm_source=teletype&amp;utm_medium=article&amp;utm_campaign=kejs_printer">собрать главную карточку</a>.</p>
+<p>А какой товар вам оформлять сложнее всего? Напишите в комментариях.</p>
+  </div></div>
+</main>
+
+<script>
+(function(){
+function sel(node){var r=document.createRange();r.selectNodeContents(node);var s=window.getSelection();s.removeAllRanges();s.addRange(r)}
+function flash(btn,hint,ok){
+  if(ok){var t=btn.dataset.t||btn.textContent;btn.dataset.t=t;btn.textContent='Скопировано ✓';btn.classList.add('ok');if(hint)hint.textContent='';setTimeout(function(){btn.textContent=t;btn.classList.remove('ok')},1800)}
+  else if(hint){hint.textContent='Текст выделен: нажмите Ctrl+C.'}
+}
+function copySelected(node){
+  sel(node);var ok=false;try{ok=document.execCommand('copy')}catch(e){}return ok;
+}
+function copyRich(node,btn,hint){
+  var html=node.innerHTML, plain=node.innerText;
+  var done=function(ok){flash(btn,hint,ok)};
+  if(navigator.clipboard&&window.ClipboardItem){
+    try{
+      var item=new ClipboardItem({'text/html':new Blob([html],{type:'text/html'}),'text/plain':new Blob([plain],{type:'text/plain'})});
+      navigator.clipboard.write([item]).then(function(){done(true)},function(){done(copySelected(node))});
+      return;
+    }catch(e){}
+  }
+  done(copySelected(node));
+}
+function copyPlain(node,btn,hint){
+  var text=node.innerText;
+  if(navigator.clipboard&&navigator.clipboard.writeText){
+    navigator.clipboard.writeText(text).then(function(){flash(btn,hint,true)},function(){flash(btn,hint,copySelected(node))});
+  }else{flash(btn,hint,copySelected(node))}
+}
+var art=document.getElementById('article');
+[['copyArticle','articleHint'],['copyArticle2','articleHint2']].forEach(function(p){
+  var b=document.getElementById(p[0]),h=document.getElementById(p[1]);
+  b.addEventListener('click',function(){copyRich(art,b,h)});
+});
+document.querySelectorAll('button[data-for]').forEach(function(b){
+  var node=document.getElementById(b.dataset.for),h=b.parentNode.querySelector('.hint');
+  b.addEventListener('click',function(){copyPlain(node,b,h)});
+});
+})();
+</script>
