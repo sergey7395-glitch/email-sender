@@ -1,0 +1,154 @@
+<title>Колонка для Rusbase</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: three short steps on top, then the whole article as one block with a single copy button. */
+:root{
+  --bg:#f3f5f4; --surface:#ffffff; --fg:#1c2623; --muted:#5d6a66; --line:#d9dfdc;
+  --accent:#0f6b5c; --accent-fg:#ffffff; --accent-soft:#e1efeb; --warn:#8a5a00; --warn-soft:#fbf0d9; --ok:#1f7a45;
+  --block:#eef2f0;
+  --sans:'IBM Plex Sans',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+  --mono:'IBM Plex Mono',ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#111917; --surface:#18221f; --fg:#e6ece9; --muted:#97a6a1; --line:#2a3834;
+  --accent:#4cc3ac; --accent-fg:#06211b; --accent-soft:#1d3530; --warn:#e7b85a; --warn-soft:#352b14; --ok:#5fcf8c; --block:#1f2c28; color-scheme:dark;}}
+:root[data-theme="dark"]{
+  --bg:#111917; --surface:#18221f; --fg:#e6ece9; --muted:#97a6a1; --line:#2a3834;
+  --accent:#4cc3ac; --accent-fg:#06211b; --accent-soft:#1d3530; --warn:#e7b85a; --warn-soft:#352b14; --ok:#5fcf8c; --block:#1f2c28; color-scheme:dark;}
+body{background:var(--bg);color:var(--fg);font-family:var(--sans);font-size:16px;line-height:1.55;padding-inline:16px;padding-block:24px 56px}
+.wrap{max-width:760px;margin-inline:auto;display:flex;flex-direction:column;gap:16px}
+h1.page{font-size:24px;line-height:1.25;margin:0;font-weight:600;text-wrap:balance}
+.lead{margin:0;color:var(--muted);max-width:62ch}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px;display:flex;flex-direction:column;gap:10px}
+.step{display:flex;gap:12px;align-items:flex-start}
+.num{flex:0 0 auto;width:28px;height:28px;border-radius:50%;background:var(--accent);color:var(--accent-fg);font-family:var(--mono);font-weight:500;font-size:14px;display:grid;place-items:center}
+.step h2{margin:0;font-size:17px;line-height:1.3;font-weight:600;padding-top:2px}
+.step p{margin:4px 0 0;font-size:15px;color:var(--muted)}
+.stepbody{flex:1;min-width:0;display:flex;flex-direction:column;gap:8px}
+.box{background:var(--block);border:1px solid var(--line);border-radius:8px;padding:10px 12px;font-size:15px;overflow-wrap:anywhere;white-space:pre-wrap}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+button{font:inherit;cursor:pointer}
+.copy{background:var(--accent);color:var(--accent-fg);border:0;border-radius:8px;padding:9px 16px;font-weight:600;font-size:15px;min-height:40px}
+.copy.big{font-size:17px;padding:13px 22px;min-height:50px}
+.copy.ok{background:var(--ok);color:#fff}
+.copy:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.hint{font-size:13px;color:var(--warn)}
+.note{background:var(--warn-soft);border-radius:8px;padding:10px 12px;font-size:14px}
+.note b{font-weight:600}
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:3;background:var(--bg);padding-block:8px;display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.paper{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:20px 22px}
+#article{font-family:Georgia,'Times New Roman',serif;font-size:17px;line-height:1.65;color:var(--fg)}
+#article h2{font-family:var(--sans);font-size:21px;line-height:1.3;margin:26px 0 10px;font-weight:600}
+#article p{margin:0 0 14px}
+#article ol{margin:0 0 14px;padding-left:24px}
+#article li{margin-bottom:6px}
+#article a{color:var(--accent)}
+#article .pic{font-family:var(--sans);font-size:14px;color:var(--warn);background:var(--warn-soft);padding:6px 10px;border-radius:6px;margin:0 0 14px;display:block}
+#article{font-family:Georgia,'Times New Roman',serif;font-size:17px;line-height:1.65}
+#article h2{font-family:var(--sans);font-size:21px;line-height:1.3;margin:24px 0 10px;font-weight:600}
+#article p{margin:0 0 14px}#article ul{margin:0 0 14px;padding-left:24px}#article li{margin-bottom:6px}
+.paper{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:20px 22px}
+.tags{display:flex;gap:6px;flex-wrap:wrap}
+.tag{font-family:var(--mono);font-size:13px;background:var(--block);border:1px solid var(--line);border-radius:6px;padding:2px 8px}
+@media (prefers-reduced-motion: reduce){*{transition:none!important}}
+</style>
+
+<main class="wrap">
+  <h1 class="page">Колонка для Rusbase: проверить и отправить</h1>
+  <p class="lead">Эксклюзивный текст из вашего опыта, около 6 тысяч знаков, от первого лица. Rusbase принимает только материалы, которые нигде не публиковались, поэтому пока ждёте ответа, этот текст больше нигде не размещайте.</p>
+
+  <div class="card">
+    <div class="step"><div class="num">1</div><div class="stepbody">
+      <h2>Проверьте текст</h2>
+      <p>Это всё должно быть правдой по вашему опыту. Особенно проверьте: сцену с зарядкой, детали про воздуходувку (ствол, носик, воздух спереди и сзади), разрез мотора и «правила, которые я вывел». Если что-то не так, скажите мне, что поправить, прежде чем отправлять. Имя в конце («Сергей Яковлев») тоже проверьте.</p>
+    </div></div>
+  </div>
+
+  <div class="paper"><div id="article">
+<p>Я делаю сервис Cardroom: он собирает карточки товаров для маркетплейсов по одному фото. Через мои тесты прошло много разных товаров, и за это время я хорошо выучил, где нейросеть блестяще справляется, а где ломается каждый раз. Расскажу про вторую часть: она полезнее, потому что именно здесь продавцы теряют время и деньги.</p>
+
+<h2>Что получается хорошо</h2>
+<p>Если коротко: яркая сцена, оформление, инфографика, надписи. Для этого не нужна студия и свет. Я проверял на фото зарядки, которая лежит на листе бумаги: из такого снимка получается готовая карточка. Нейросеть сама определила модель и мощность, мне пришлось ввести только слово «зарядка». Это сильная сторона, и я не собираюсь её умалять.</p>
+
+<h2>Что не получается</h2>
+<p>За время тестов я набрал целую коллекцию «франкенштейнов». Они повторяются по типам, поэтому их можно предсказать.</p>
+
+<p><b>1. Один предмет, вставленный в другой.</b> Лучший пример: зарядное устройство со встроенной вилкой, воткнутое в розетку. Я просил нарисовать именно такую сцену, и ни одна из моделей, которые я пробовал, включая самые новые, не справилась. Не «иногда ошибалась», а не справлялась каждый раз. Вилка и розетка не стыкуются, детали сливаются, форма предмета ломается. Если вам нужна такая сцена, вам не сюда: нейросеть здесь пока не работает.</p>
+
+<p><b>2. Рабочие части со сложной формой и направлением.</b> Самый показательный товар у меня аккумуляторная воздуходувка. Это первая модель, на которой я начинал сервис, и она участвовала во всех моих тестах. Нейросеть то сгибала ствол, то рисовала другой носик. На ранних версиях воздух выходил и спереди, и сзади, то есть направление работы устройства противоречило здравому смыслу. Покупатель, который знает, как выглядит воздуходувка, увидит ошибку сразу.</p>
+
+<p><b>3. Внутреннее устройство.</b> Я пробовал показать разрез мотора и место, где стоят аккумуляторы. Нейросеть рисует убедительную картинку, но детали она придумывает. Для карточки, где покупатель принимает решение, такая выдумка опаснее, чем её отсутствие.</p>
+
+<h2>Почему, как мне кажется, так происходит</h2>
+<p>Это моё предположение, а не знание того, как устроены модели. Они отлично рисуют, как предмет выглядит снаружи, но хуже понимают механику: как деталь входит в деталь, куда направлен поток воздуха, что находится внутри корпуса. Поэтому всё, что про внешний вид, получается убедительно, а всё, что про стыковку и устройство, выглядит правдоподобно, но неверно. Правдоподобная ошибка опаснее заметной, потому что её легко пропустить.</p>
+
+<h2>Правила, которые я вывел</h2>
+<ul>
+<li><b>Не просите сцену, где один предмет входит в другой.</b> Зарядку показывайте отдельно от розетки.</li>
+<li><b>Смотрите на рабочие части.</b> Сопло, носик, ручка, кнопки: проверьте форму и направление.</li>
+<li><b>Не просите разрезы и внутренности.</b> Если нужен вид изнутри, используйте реальное фото или схему производителя.</li>
+<li><b>Считайте детали.</b> Предметов на карточке должно быть столько же, сколько на вашем фото.</li>
+<li><b>Сверяйте цифры и надписи с товаром,</b> каждый раз.</li>
+</ul>
+
+<h2>Как проверить карточку за пять минут</h2>
+<p>Я открываю карточку и фото товара рядом и иду по порядку. Сначала считаю предметы: их не должно стать больше или меньше. Потом смотрю на силуэт: совпадает ли общая форма. Затем иду по рабочим частям: где у товара вход, выход, ручка, кнопка. Потом читаю каждую надпись по буквам и сверяю каждую цифру с характеристиками. В конце открываю карточку на телефоне, потому что большинство покупок идёт оттуда, и проверяю, читается ли мелкий текст. Всё это занимает несколько минут.</p>
+
+<h2>Как формулировать правки</h2>
+<p>Если карточка почти хороша, но есть ошибка, пожелание должно быть конкретным и касаться одной вещи: «убрать лишний предмет», «сопло прямое, воздух выходит только спереди», «исправить слово». Расплывчатое «сделай получше» не говорит модели, что именно менять.</p>
+
+<h2>Что из этого следует для продавца</h2>
+<p>Нейросеть хороша там, где нужно оформить и упаковать товар: сцена, подача, текст. Она слаба там, где нужна механическая точность: стыковка деталей, направление потока, внутренности. Поэтому я убрал для себя вопрос «справится или нет» и заменил его вопросом «что здесь надо проверить». Проверка занимает несколько минут и даёт больше, чем попытки уговорить модель нарисовать невозможное.</p>
+
+<p>Я не скрываю эти ограничения, потому что продавцу выгодно знать их заранее. Тогда карточка выходит удачной с первой-второй попытки, а не с десятой, а предметы, которые модели пока не по силам, вы просто обходите.</p>
+
+<p><i>Об авторе: Сергей Яковлев, делаю Cardroom (absolutecard.ru), сервис, который собирает карточки товаров для Wildberries, Ozon и Яндекс Маркета по одному фото.</i></p>
+  </div></div>
+
+  <div class="card">
+    <div class="step"><div class="num">2</div><div class="stepbody">
+      <h2>Письмо в редакцию</h2>
+      <p>Адрес редакции для авторских материалов:</p>
+      <div class="box" id="to">opinion@rb.ru</div>
+      <div class="row"><button class="copy" type="button" data-for="to">Скопировать адрес</button><span class="hint"></span></div>
+      <p>Тема письма:</p>
+      <div class="box" id="subj">Колонка: что нейросеть до сих пор не умеет рисовать на карточках товаров</div>
+      <div class="row"><button class="copy" type="button" data-for="subj">Скопировать тему</button><span class="hint"></span></div>
+    </div></div>
+  </div>
+
+  <div class="card">
+    <div class="step"><div class="num">3</div><div class="stepbody">
+      <h2>Текст письма</h2>
+      <p>Кнопка копирует короткое сопроводительное письмо и всю колонку под ним. Вставьте в тело письма и отправьте со своей почты.</p>
+      <div class="box" id="intro" style="font-size:14px">Здравствуйте!
+
+Предлагаю колонку для Rusbase: «Что нейросеть до сих пор не умеет рисовать на карточках товаров». Это практический опыт человека, который делает сервис для карточек маркетплейсов: какие сцены нейросеть не тянет вообще (например, зарядка, воткнутая в розетку), где ломается форма (воздуходувка) и какие правила проверки я из этого вывел. Материал эксклюзивный, нигде не публиковался, объём около 6 тысяч знаков, от первого лица. Текст ниже, готов обсудить правки.
+
+С уважением,
+Сергей Яковлев</div>
+      <div class="row"><button class="copy big" type="button" id="copyMail">Скопировать письмо и колонку</button><span class="hint" id="mailHint"></span></div>
+      <p>После отправки пришлите мне скриншот отправленного письма или напишите «отправил». Если за 7–10 дней ответа не будет, следующим шагом можно предложить текст другому изданию (например, Cossa, там нужен профиль автора).</p>
+    </div></div>
+  </div>
+</main>
+
+<script>
+(function(){
+function sel(n){var r=document.createRange();r.selectNodeContents(n);var s=window.getSelection();s.removeAllRanges();s.addRange(r)}
+function flash(b,h,ok){if(ok){var t=b.dataset.t||b.textContent;b.dataset.t=t;b.textContent='Скопировано ✓';b.classList.add('ok');if(h)h.textContent='';setTimeout(function(){b.textContent=t;b.classList.remove('ok')},1800)}else if(h){h.textContent='Текст выделен: нажмите Ctrl+C.'}}
+function fb(n){sel(n);var ok=false;try{ok=document.execCommand('copy')}catch(e){}return ok}
+document.querySelectorAll('button[data-for]').forEach(function(b){
+  var n=document.getElementById(b.dataset.for),h=b.parentNode.querySelector('.hint');
+  b.addEventListener('click',function(){var t=n.innerText;
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(function(){flash(b,h,true)},function(){flash(b,h,fb(n))})}else{flash(b,h,fb(n))}});
+});
+var mb=document.getElementById('copyMail'),mh=document.getElementById('mailHint');
+mb.addEventListener('click',function(){
+  var t=document.getElementById('intro').innerText+'\n\n'+document.getElementById('article').innerText;
+  if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(function(){flash(mb,mh,true)},function(){flash(mb,mh,fb(document.getElementById('article')))})}else{flash(mb,mh,fb(document.getElementById('article')))}
+});
+})();
+</script>
