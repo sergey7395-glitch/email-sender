@@ -1,4 +1,4 @@
-<title>Клип для VK</title>
+<title>Конструктор клипа</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
@@ -50,55 +50,62 @@ button{font:inherit;cursor:pointer}
 .tags{display:flex;gap:6px;flex-wrap:wrap}
 .tag{font-family:var(--mono);font-size:13px;background:var(--block);border:1px solid var(--line);border-radius:6px;padding:2px 8px}
 @media (prefers-reduced-motion: reduce){*{transition:none!important}}
+
+.frames{display:flex;flex-direction:column;gap:8px}
+.fr{display:flex;gap:8px;align-items:center;flex-wrap:wrap;border:1px solid var(--line);border-radius:8px;padding:8px;background:var(--surface)}
+.fr img{width:48px;height:64px;object-fit:cover;border-radius:6px;flex:0 0 auto;background:var(--block)}
+.fr .n{font-family:var(--mono);font-size:13px;color:var(--muted);width:20px;flex:0 0 auto}
+.fr input{flex:1 1 180px;min-width:0;padding:8px;border:1px solid var(--line);border-radius:8px;background:var(--surface);color:var(--fg);font:inherit;font-size:14px}
+.mini{background:var(--block);color:var(--fg);border:1px solid var(--line);border-radius:8px;min-width:40px;min-height:40px;font-size:16px}
+.mini:focus-visible,.pick:focus-within{outline:3px solid var(--accent);outline-offset:2px}
+.pick{display:inline-block;background:var(--accent);color:var(--accent-fg);border-radius:8px;padding:11px 18px;font-weight:600;cursor:pointer}
+.pick input{position:absolute;opacity:0;width:1px;height:1px}
+.copy[disabled]{opacity:.5;cursor:not-allowed}
+.stage{display:flex;gap:16px;flex-wrap:wrap;align-items:flex-start}
+.stage canvas,.stage video{width:min(100%,240px);aspect-ratio:9/16;border-radius:10px;background:#101816;border:1px solid var(--line)}
+.bar2{height:8px;background:var(--block);border-radius:6px;overflow:hidden;width:min(100%,240px)}
+.bar2>i{display:block;height:100%;width:0;background:var(--accent)}
+select{padding:8px;border:1px solid var(--line);border-radius:8px;background:var(--surface);color:var(--fg);font:inherit}
 </style>
 
 <main class="wrap">
-  <h1 class="page">Короткое видео «фото → карточка»: пять шагов</h1>
-  <p class="lead">Клип на 15–17 секунд без голоса: обычное фото товара и готовая карточка. Делается в самом VK из тех картинок, что у вас уже есть. Те же материалы потом подойдут для Rutube и YouTube Shorts.</p>
+  <h1 class="page">Клип «фото → карточка»: три шага</h1>
+  <p class="lead">Страница сама собирает вертикальное видео 15 секунд из ваших картинок, с надписями и плавной сменой кадров. Видео собирается у вас в браузере, картинки никуда не загружаются.</p>
 
   <div class="card">
     <div class="step"><div class="num">1</div><div class="stepbody">
-      <h2>Соберите картинки в одну папку</h2>
-      <p>Нужны только ваши товары. Лучше всего, если есть пары «исходное фото → готовая карточка» (по плану: зарядка на листе бумаги → оранжевая карточка). Карточки берите скачанные, без водяного знака. Фото клиентов и чужие товары не берите.</p>
-      <div class="box">1. Фото зарядки на листе бумаги и её карточка
-2. Фото принтера и одна-две карточки его серии (если есть исходное фото)
-3. Новогодняя карточка кофеварки
-4. Ещё одна готовая карточка любого вашего товара</div>
+      <h2>Соберите видео из картинок</h2>
+      <p>Нажмите кнопку и выберите картинки в таком порядке: фото зарядки на листе бумаги, её карточка, фото принтера, одна-две карточки его серии, новогодняя карточка кофеварки. Только ваши товары, карточки лучше без водяного знака. Порядок можно поменять стрелками, надписи можно править.</p>
+      <div class="row"><label class="pick">Выбрать картинки<input id="pick" type="file" accept="image/*" multiple></label><span class="hint" id="pickHint"></span></div>
+      <div class="frames" id="frames"></div>
+      <div class="row"><label for="sec" style="font-size:14px">Секунд на кадр</label>
+        <select id="sec"><option value="2">2</option><option value="3" selected>3</option><option value="4">4</option></select>
+        <button class="copy big" type="button" id="build" disabled>Собрать клип</button></div>
+      <div class="stage">
+        <canvas id="cv" width="720" height="1280"></canvas>
+        <div style="display:flex;flex-direction:column;gap:10px;min-width:0;flex:1 1 220px">
+          <div class="bar2" id="barWrap" hidden><i id="bar"></i></div>
+          <div class="hint" id="status">Сначала выберите картинки: нужно минимум две.</div>
+          <video id="out" controls playsinline hidden></video>
+          <div class="row"><button class="copy big" type="button" id="save" hidden>Сохранить видео на компьютер</button></div>
+          <div class="note" id="tip">Пока идёт запись, не переключайтесь на другую вкладку: запись идёт в реальном времени и в фоне собьётся.</div>
+        </div>
+      </div>
     </div></div>
   </div>
 
   <div class="card">
     <div class="step"><div class="num">2</div><div class="stepbody">
-      <h2>Откройте создание клипа</h2>
-      <p>В сообществе «Абсолютный сервис» нажмите «+ Создать» и выберите «Клип». Загрузите картинки с устройства и расположите их по порядку из таблицы ниже. Если VK просит видео, а не картинки, откройте любой простой видеоредактор на телефоне и соберите ролик там: суть та же.</p>
+      <h2>Загрузите видео в VK</h2>
+      <p>Откройте сообщество, нажмите «+ Создать», выберите «Клип» и «Выбрать файл». Выберите сохранённое видео. Если VK не принял формат, напишите мне: сохраню в другом.</p>
       <div class="row"><a class="copy" style="text-decoration:none;display:inline-block" href="https://vk.com/club240557286" target="_blank" rel="noopener">Открыть сообщество</a></div>
     </div></div>
   </div>
 
   <div class="card">
     <div class="step"><div class="num">3</div><div class="stepbody">
-      <h2>Порядок кадров и надписи на экране</h2>
-      <div class="tw"><table class="tl"><thead><tr><th>Секунды</th><th>Кадр</th><th>Надпись</th></tr></thead><tbody>
-      <tr><td>0–3</td><td>Фото зарядки на листе бумаги</td><td>Обычное фото с телефона</td></tr>
-      <tr><td>3–7</td><td>Карточка зарядки</td><td>Через 2 минуты: карточка для маркетплейса</td></tr>
-      <tr><td>7–10</td><td>Фото принтера, затем его карточка</td><td>И так с любым товаром</td></tr>
-      <tr><td>10–14</td><td>Три-четыре карточки по 1 секунде</td><td>Серия из 6 карточек</td></tr>
-      <tr><td>14–17</td><td>Последняя карточка</td><td>Главная карточка бесплатно. absolutecard.ru</td></tr>
-      </tbody></table></div>
-      <p>Надписи можно вставить кнопкой «Текст» в редакторе. Музыку берите из встроенной библиотеки VK, чужую не загружайте.</p>
-      <div class="box" id="screen">Обычное фото с телефона
-Через 2 минуты: карточка для маркетплейса
-И так с любым товаром
-Серия из 6 карточек
-Главная карточка бесплатно. absolutecard.ru</div>
-      <div class="row"><button class="copy" type="button" data-for="screen">Скопировать надписи</button><span class="hint"></span></div>
-    </div></div>
-  </div>
-
-  <div class="card">
-    <div class="step"><div class="num">4</div><div class="stepbody">
-      <h2>Описание клипа</h2>
-      <p>Вставьте в поле описания:</p>
+      <h2>Описание и публикация</h2>
+      <p>Вставьте в поле описания клипа, нажмите «Опубликовать» и пришлите мне ссылку или скриншот.</p>
       <div class="box" id="desc">Из обычного фото товара за пару минут получается карточка для Wildberries и Ozon. Главную карточку можно собрать бесплатно: https://absolutecard.ru/?utm_source=vk&utm_medium=clip&utm_campaign=foto_v_kartochku
 
 Цифры и надписи на готовой карточке сверяйте с товаром.
@@ -107,24 +114,138 @@ button{font:inherit;cursor:pointer}
       <div class="row"><button class="copy big" type="button" data-for="desc">Скопировать описание</button><span class="hint"></span></div>
     </div></div>
   </div>
-
-  <div class="card">
-    <div class="step"><div class="num">5</div><div class="stepbody">
-      <h2>Опубликуйте</h2>
-      <p>Нажмите «Опубликовать» и пришлите мне ссылку на клип или скриншот. Если клип получился, тот же ролик загрузите на Rutube и в YouTube Shorts, описание оставьте то же.</p>
-    </div></div>
-  </div>
 </main>
 
 <script>
 (function(){
+function el(id){return document.getElementById(id)}
+var W=720,H=1280,FADE=0.4;
+var DEF=['Обычное фото с телефона','Через 2 минуты: карточка для маркетплейса','И так с любым товаром','Серия из 6 карточек'];
+var LAST='Главная карточка бесплатно. absolutecard.ru';
+var frames=[],busy=false,blob=null,ext='webm',dl=null;
+var cv=el('cv'),ctx=cv.getContext('2d');
+try{if(window.claude&&window.claude.use){window.claude.use('downloads').then(function(d){dl=d},function(){dl=null})}}catch(e){}
+
+function defText(i,n){return i===n-1?LAST:(DEF[i]||'')}
+function refresh(){frames.forEach(function(f,i){if(!f.edited)f.text=defText(i,frames.length)})}
+function loadImg(file){return new Promise(function(res,rej){var u=URL.createObjectURL(file),im=new Image();im.onload=function(){res({img:im,url:u,text:'',edited:false})};im.onerror=function(){rej()};im.src=u})}
+
+function lines(text,maxW,font){ctx.font=font;var words=text.split(' '),out=[],cur='';words.forEach(function(w){var t=cur?cur+' '+w:w;if(ctx.measureText(t).width>maxW&&cur){out.push(cur);cur=w}else cur=t});if(cur)out.push(cur);return out}
+function rr(x,y,w,h,r){ctx.beginPath();ctx.moveTo(x+r,y);ctx.arcTo(x+w,y,x+w,y+h,r);ctx.arcTo(x+w,y+h,x,y+h,r);ctx.arcTo(x,y+h,x,y,r);ctx.arcTo(x,y,x+w,y,r);ctx.closePath()}
+function drawOne(f,alpha){
+  ctx.globalAlpha=alpha;
+  ctx.fillStyle='#101816';ctx.fillRect(0,0,W,H);
+  var iw=f.img.naturalWidth,ih=f.img.naturalHeight;
+  var cs=Math.max(W/iw,H/ih);
+  try{ctx.filter='blur(28px) brightness(0.7)'}catch(e){}
+  ctx.drawImage(f.img,(W-iw*cs)/2,(H-ih*cs)/2,iw*cs,ih*cs);
+  try{ctx.filter='none'}catch(e){}
+  var areaH=H*0.8,s=Math.min(W/iw,areaH/ih),dw=iw*s,dh=ih*s;
+  ctx.drawImage(f.img,(W-dw)/2,(areaH-dh)/2+16,dw,dh);
+  if(f.text){
+    var font="600 46px 'IBM Plex Sans',system-ui,sans-serif";
+    var ls=lines(f.text,W-150,font),lh=58,bh=ls.length*lh+36,by=H-70-bh;
+    ctx.fillStyle='rgba(8,14,12,0.78)';rr(32,by,W-64,bh,22);ctx.fill();
+    ctx.fillStyle='#ffffff';ctx.textAlign='center';ctx.textBaseline='middle';ctx.font=font;
+    ls.forEach(function(l,k){ctx.fillText(l,W/2,by+18+lh*k+lh/2)});
+  }
+  ctx.globalAlpha=1;
+}
+function sec(){return +el('sec').value}
+function scene(t){
+  var n=frames.length;if(!n)return;
+  var s=sec(),i=Math.min(n-1,Math.floor(t/s)),loc=t-i*s;
+  if(i>0&&loc<FADE){drawOne(frames[i-1],1);drawOne(frames[i],loc/FADE)}else drawOne(frames[i],1);
+}
+function preview(){if(frames.length)scene(0);else{ctx.fillStyle='#101816';ctx.fillRect(0,0,W,H)}}
+
+function render(){
+  var box=el('frames');box.innerHTML='';
+  frames.forEach(function(f,i){
+    var r=document.createElement('div');r.className='fr';
+    var im=document.createElement('img');im.src=f.url;im.alt='';
+    var n=document.createElement('span');n.className='n';n.textContent=String(i+1);
+    var inp=document.createElement('input');inp.type='text';inp.id='t'+i;inp.value=f.text;inp.setAttribute('aria-label','Надпись на кадре '+(i+1));
+    inp.addEventListener('input',function(){f.text=inp.value;f.edited=true;preview()});
+    function mk(label,aria,fn){var b=document.createElement('button');b.type='button';b.className='mini';b.textContent=label;b.setAttribute('aria-label',aria);b.addEventListener('click',fn);return b}
+    r.appendChild(n);r.appendChild(im);r.appendChild(inp);
+    r.appendChild(mk('▲','Выше',function(){if(i>0){var t=frames[i-1];frames[i-1]=frames[i];frames[i]=t;refresh();render();preview()}}));
+    r.appendChild(mk('▼','Ниже',function(){if(i<frames.length-1){var t=frames[i+1];frames[i+1]=frames[i];frames[i]=t;refresh();render();preview()}}));
+    r.appendChild(mk('✕','Убрать',function(){frames.splice(i,1);refresh();render();preview();state()}));
+    box.appendChild(r);
+  });
+  state();
+}
+function state(){
+  el('build').disabled=busy||frames.length<2;
+  if(!busy){el('status').textContent=frames.length<2?'Сначала выберите картинки: нужно минимум две.':'Всего '+frames.length+' кадров, видео будет '+(frames.length*sec())+' секунд. Нажмите «Собрать клип».'}
+}
+el('sec').addEventListener('change',function(){state()});
+el('pick').addEventListener('change',function(e){
+  var files=Array.prototype.slice.call(e.target.files||[]);if(!files.length)return;
+  el('pickHint').textContent='Загружаю…';
+  Promise.all(files.map(loadImg)).then(function(list){
+    frames=frames.concat(list);refresh();render();preview();el('pickHint').textContent='';
+    el('pick').value='';
+  },function(){el('pickHint').textContent='Не удалось открыть одну из картинок. Выберите файлы JPG, PNG или WEBP.'});
+});
+
+function pickMime(){
+  if(typeof MediaRecorder==='undefined')return null;
+  var c=['video/mp4;codecs=avc1.42E01E','video/mp4','video/webm;codecs=vp9','video/webm;codecs=vp8','video/webm'];
+  for(var i=0;i<c.length;i++){try{if(MediaRecorder.isTypeSupported(c[i]))return c[i]}catch(e){}}
+  return null;
+}
+el('build').addEventListener('click',function(){
+  if(busy||frames.length<2)return;
+  var mime=pickMime();
+  if(!mime||!cv.captureStream){el('status').textContent='Этот браузер не умеет записывать видео. Откройте страницу в Chrome или Edge на компьютере.';return}
+  busy=true;blob=null;el('out').hidden=true;el('save').hidden=true;el('barWrap').hidden=false;el('bar').style.width='0';
+  el('build').disabled=true;
+  var ready=(document.fonts&&document.fonts.load)?document.fonts.load("600 46px 'IBM Plex Sans'").catch(function(){}):Promise.resolve();
+  ready.then(function(){
+    var total=frames.length*sec(),chunks=[],stream=cv.captureStream(30),rec;
+    try{rec=new MediaRecorder(stream,{mimeType:mime,videoBitsPerSecond:4000000})}catch(e){rec=new MediaRecorder(stream)}
+    rec.ondataavailable=function(ev){if(ev.data&&ev.data.size)chunks.push(ev.data)};
+    rec.onstop=function(){
+      busy=false;el('barWrap').hidden=true;
+      var type=(rec.mimeType||mime).split(';')[0];ext=type.indexOf('mp4')>=0?'mp4':'webm';
+      blob=new Blob(chunks,{type:type});
+      if(!blob.size){el('status').textContent='Не получилось записать видео. Попробуйте ещё раз в Chrome.';state();return}
+      var v=el('out');v.src=URL.createObjectURL(blob);v.hidden=false;
+      el('status').textContent='Готово. Посмотрите видео и сохраните файл.';
+      if(dl){el('save').hidden=false}else{el('tip').textContent='Сохранение кнопкой здесь недоступно: нажмите на видео правой кнопкой мыши и выберите «Сохранить видео как».'}
+      state();el('status').textContent='Готово. Посмотрите видео и сохраните файл.';
+    };
+    rec.start(250);
+    el('status').textContent='Идёт запись, не переключайте вкладку…';
+    var t0=performance.now();
+    (function tick(){
+      var t=(performance.now()-t0)/1000;
+      if(t>=total){scene(total-0.001);setTimeout(function(){rec.stop()},120);return}
+      scene(t);el('bar').style.width=Math.round(t/total*100)+'%';
+      requestAnimationFrame(tick);
+    })();
+  });
+});
+el('save').addEventListener('click',function(){
+  if(!blob||!dl)return;
+  dl.save({filename:'klip-foto-v-kartochku.'+ext,data:blob}).then(function(){
+    el('status').textContent='Файл сохранён. Теперь шаг 2: загрузите его в VK.';
+  },function(e){
+    var c=e&&e.code;
+    el('status').textContent=c==='declined'?'Сохранение отменено. Нажмите кнопку ещё раз, когда будете готовы.':'Не получилось сохранить кнопкой. Нажмите на видео правой кнопкой мыши и выберите «Сохранить видео как».';
+  });
+});
+
 function sel(n){var r=document.createRange();r.selectNodeContents(n);var s=window.getSelection();s.removeAllRanges();s.addRange(r)}
 function flash(b,h,ok){if(ok){var t=b.dataset.t||b.textContent;b.dataset.t=t;b.textContent='Скопировано ✓';b.classList.add('ok');if(h)h.textContent='';setTimeout(function(){b.textContent=t;b.classList.remove('ok')},1800)}else if(h){h.textContent='Текст выделен: нажмите Ctrl+C.'}}
 function fb(n){sel(n);var ok=false;try{ok=document.execCommand('copy')}catch(e){}return ok}
 document.querySelectorAll('button[data-for]').forEach(function(b){
-  var n=document.getElementById(b.dataset.for),h=b.parentNode.querySelector('.hint');
+  var n=el(b.dataset.for),h=b.parentNode.querySelector('.hint');
   b.addEventListener('click',function(){var t=n.innerText;
     if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(function(){flash(b,h,true)},function(){flash(b,h,fb(n))})}else{flash(b,h,fb(n))}});
 });
+preview();
 })();
 </script>
