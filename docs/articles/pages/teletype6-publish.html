@@ -1,0 +1,172 @@
+<title>Статья 6 для Teletype</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: three short steps on top, then the whole article as one block with a single copy button. */
+:root{
+  --bg:#f3f5f4; --surface:#ffffff; --fg:#1c2623; --muted:#5d6a66; --line:#d9dfdc;
+  --accent:#0f6b5c; --accent-fg:#ffffff; --accent-soft:#e1efeb; --warn:#8a5a00; --warn-soft:#fbf0d9; --ok:#1f7a45;
+  --block:#eef2f0;
+  --sans:'IBM Plex Sans',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+  --mono:'IBM Plex Mono',ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#111917; --surface:#18221f; --fg:#e6ece9; --muted:#97a6a1; --line:#2a3834;
+  --accent:#4cc3ac; --accent-fg:#06211b; --accent-soft:#1d3530; --warn:#e7b85a; --warn-soft:#352b14; --ok:#5fcf8c; --block:#1f2c28; color-scheme:dark;}}
+:root[data-theme="dark"]{
+  --bg:#111917; --surface:#18221f; --fg:#e6ece9; --muted:#97a6a1; --line:#2a3834;
+  --accent:#4cc3ac; --accent-fg:#06211b; --accent-soft:#1d3530; --warn:#e7b85a; --warn-soft:#352b14; --ok:#5fcf8c; --block:#1f2c28; color-scheme:dark;}
+body{background:var(--bg);color:var(--fg);font-family:var(--sans);font-size:16px;line-height:1.55;padding-inline:16px;padding-block:24px 56px}
+.wrap{max-width:760px;margin-inline:auto;display:flex;flex-direction:column;gap:16px}
+h1.page{font-size:24px;line-height:1.25;margin:0;font-weight:600;text-wrap:balance}
+.lead{margin:0;color:var(--muted);max-width:62ch}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px;display:flex;flex-direction:column;gap:10px}
+.step{display:flex;gap:12px;align-items:flex-start}
+.num{flex:0 0 auto;width:28px;height:28px;border-radius:50%;background:var(--accent);color:var(--accent-fg);font-family:var(--mono);font-weight:500;font-size:14px;display:grid;place-items:center}
+.step h2{margin:0;font-size:17px;line-height:1.3;font-weight:600;padding-top:2px}
+.step p{margin:4px 0 0;font-size:15px;color:var(--muted)}
+.stepbody{flex:1;min-width:0;display:flex;flex-direction:column;gap:8px}
+.box{background:var(--block);border:1px solid var(--line);border-radius:8px;padding:10px 12px;font-size:15px;overflow-wrap:anywhere;white-space:pre-wrap}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+button{font:inherit;cursor:pointer}
+.copy{background:var(--accent);color:var(--accent-fg);border:0;border-radius:8px;padding:9px 16px;font-weight:600;font-size:15px;min-height:40px}
+.copy.big{font-size:17px;padding:13px 22px;min-height:50px}
+.copy.ok{background:var(--ok);color:#fff}
+.copy:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.hint{font-size:13px;color:var(--warn)}
+.note{background:var(--warn-soft);border-radius:8px;padding:10px 12px;font-size:14px}
+.note b{font-weight:600}
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:3;background:var(--bg);padding-block:8px;display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.paper{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:20px 22px}
+#article{font-family:Georgia,'Times New Roman',serif;font-size:17px;line-height:1.65;color:var(--fg)}
+#article h2{font-family:var(--sans);font-size:21px;line-height:1.3;margin:26px 0 10px;font-weight:600}
+#article p{margin:0 0 14px}
+#article ol{margin:0 0 14px;padding-left:24px}
+#article li{margin-bottom:6px}
+#article a{color:var(--accent)}
+#article .pic{font-family:var(--sans);font-size:14px;color:var(--warn);background:var(--warn-soft);padding:6px 10px;border-radius:6px;margin:0 0 14px;display:block}
+.tags{display:flex;gap:6px;flex-wrap:wrap}
+.tag{font-family:var(--mono);font-size:13px;background:var(--block);border:1px solid var(--line);border-radius:6px;padding:2px 8px}
+@media (prefers-reduced-motion: reduce){*{transition:none!important}}
+</style>
+
+<main class="wrap">
+  <h1 class="page">Шестая статья для Teletype: вставить целиком за четыре шага</h1>
+  <p class="lead">Тема под запросы «заказать карточки для вб», «сайт для заказа карточек»: как выбрать исполнителя. Одна ссылка в конце.</p>
+
+  <div class="card">
+    <div class="step"><div class="num">1</div><div class="stepbody">
+      <h2>Откройте Teletype</h2>
+      <p>Перейдите по ссылке (вы уже зарегистрированы) и начните новую статью. Дальше возвращайтесь на эту страницу.</p>
+      <div class="row"><a class="copy" style="text-decoration:none;display:inline-block" href="https://teletype.in/" target="_blank" rel="noopener">Открыть teletype.in</a></div>
+    </div></div>
+  </div>
+
+  <div class="card">
+    <div class="step"><div class="num">2</div><div class="stepbody">
+      <h2>Заголовок и подзаголовок</h2>
+      <p>Заголовок вставьте в строку заголовка:</p>
+      <div class="box" id="title">Где заказать карточки для Wildberries и Ozon: фрилансер, студия, конструктор или сервис</div>
+      <div class="row"><button class="copy" type="button" data-for="title">Копировать заголовок</button><span class="hint"></span></div>
+      <p>Если есть строка подзаголовка, вставьте в неё (если нет, пропустите):</p>
+      <div class="box" id="sub">Четыре варианта, сколько они стоят по времени и деньгам и что спросить у исполнителя до заказа.</div>
+      <div class="row"><button class="copy" type="button" data-for="sub">Копировать подзаголовок</button><span class="hint"></span></div>
+    </div></div>
+  </div>
+
+  <div class="card">
+    <div class="step"><div class="num">3</div><div class="stepbody">
+      <h2>Текст статьи</h2>
+      <p>Нажмите на поле текста, удалите старое (Ctrl+A, Delete), нажмите кнопку ниже и вставьте (Ctrl+V). Две жёлтые строки «Вставьте картинку»: первая под главной карточкой вашего товара, вторая под шестью карточками серии рядом. Только свой товар. Загрузите картинки и удалите жёлтые строки.</p>
+      <div class="row"><button class="copy big" type="button" id="copyArticle">Скопировать всю статью</button><span class="hint" id="articleHint"></span></div>
+    </div></div>
+  </div>
+
+  <div class="card">
+    <div class="step"><div class="num">4</div><div class="stepbody">
+      <h2>Хэштеги и публикация</h2>
+      <p>Добавьте хэштеги:</p>
+      <div class="box" id="tags">#маркетплейсы #wildberries #ozon #карточкатовара #заказкарточек</div>
+      <div class="row"><button class="copy" type="button" data-for="tags">Копировать хэштеги</button><span class="hint"></span></div>
+      <p>Если ссылка на сайт не стала кликабельной, выделите слова «собрать главную карточку бесплатно», нажмите Ctrl+K и вставьте <span style="font-family:var(--mono);overflow-wrap:anywhere">https://absolutecard.ru/sait-dlya-sozdaniya-kartochek?utm_source=teletype&amp;utm_medium=article&amp;utm_campaign=zakaz</span>. Прочитайте статью сверху вниз, опубликуйте и пришлите мне ссылку.</p>
+    </div></div>
+  </div>
+
+  <div class="bar"><span class="lead">Вся статья:</span><button class="copy" type="button" id="copyArticle2">Скопировать всю статью</button><span class="hint" id="articleHint2"></span></div>
+
+  <div class="paper"><div id="article">
+<p>Если вы ищете, где заказать карточки для Wildberries или Ozon, вариантов несколько, и у каждого свои сроки, цена и риски. Разберу четыре варианта и список вопросов, которые стоит задать исполнителю до заказа.</p>
+<span class="pic">Вставьте картинку: главная карточка вашего товара. Эту жёлтую строку удалите.</span>
+
+<h2>Четыре варианта</h2>
+<ol>
+<li><b>Фрилансер.</b> Работает по переписке, цена и качество сильно зависят от человека. Хорошо, если у него есть примеры в вашей категории. Правки обычно идут через чат и занимают дни.</li>
+<li><b>Дизайнер или студия.</b> Предсказуемее по качеству и срокам, но дороже. Ориентир, который мы видим на рынке: порядка 1 000 ₽ за карточку такого качества, а часто и больше, и несколько дней работы с правками по переписке.</li>
+<li><b>Конструктор вроде Canva.</b> Дёшево, но макет и тексты на вас, а времени уходит много, особенно на серию.</li>
+<li><b>Сервис, который собирает карточки по фото.</b> Быстро и недорого, результат виден сразу. Минус: нужна проверка цифр и надписей, нейросеть может ошибиться.</li>
+</ol>
+<span class="pic">Вставьте картинку: шесть карточек серии рядом. Эту жёлтую строку удалите.</span>
+
+<h2>Что проверить до заказа</h2>
+<ol>
+<li><b>Портфолио в вашей категории.</b> Карточки для одежды и для техники делаются по-разному.</li>
+<li><b>Что входит в цену.</b> Сколько карточек, сколько правок, нужны ли тексты, кто их пишет.</li>
+<li><b>Срок.</b> «Завтра» и «через неделю» дают разное качество, спросите заранее.</li>
+<li><b>Формат.</b> Карточки для маркетплейсов делают вертикальными, 3:4. Точные требования к размеру смотрите в кабинете продавца.</li>
+<li><b>Кто проверяет цифры и надписи.</b> Лучше, если вы получаете готовый макет и сверяете сами с вашим товаром.</li>
+<li><b>Права.</b> Откуда взяты картинки и шрифты, нет ли чужих логотипов.</li>
+<li><b>Как устроены правки.</b> Сколько их бесплатно и что считается новой работой.</li>
+</ol>
+
+<h2>Что приготовить для исполнителя</h2>
+<p>Фото товара, где он виден целиком, точное название и модель, основные характеристики и пожелания по стилю. Хорошо помогают примеры карточек, которые вам нравятся: они показывают стиль, а не товар, и копировать чужой товар или надписи нельзя.</p>
+
+<h2>Как быстро понять, подходит ли вам сервис</h2>
+<p>Самый короткий путь проверить: загрузить свой товар и посмотреть главную карточку. Если результат вас устраивает, вы сэкономили дни переписки. Если нет, вы потеряли пару минут и ничего не заплатили.</p>
+
+<h2>Попробовать</h2>
+<p>Я делаю сервис Cardroom: он собирает карточки по одному фото товара. Главная карточка собирается бесплатно, с водяным знаком, её можно один раз пересобрать до оплаты. Без знака 100 ₽, серия из шести карточек 600 ₽: <a href="https://absolutecard.ru/sait-dlya-sozdaniya-kartochek?utm_source=teletype&amp;utm_medium=article&amp;utm_campaign=zakaz">собрать главную карточку бесплатно</a>.</p>
+<p>Если вы сами делаете карточки на заказ, напишите в комментариях, какой этап у вас занимает больше всего времени.</p>
+  </div></div>
+</main>
+
+<script>
+(function(){
+function sel(node){var r=document.createRange();r.selectNodeContents(node);var s=window.getSelection();s.removeAllRanges();s.addRange(r)}
+function flash(btn,hint,ok){
+  if(ok){var t=btn.dataset.t||btn.textContent;btn.dataset.t=t;btn.textContent='Скопировано ✓';btn.classList.add('ok');if(hint)hint.textContent='';setTimeout(function(){btn.textContent=t;btn.classList.remove('ok')},1800)}
+  else if(hint){hint.textContent='Текст выделен: нажмите Ctrl+C.'}
+}
+function copySelected(node){
+  sel(node);var ok=false;try{ok=document.execCommand('copy')}catch(e){}return ok;
+}
+function copyRich(node,btn,hint){
+  var html=node.innerHTML, plain=node.innerText;
+  var done=function(ok){flash(btn,hint,ok)};
+  if(navigator.clipboard&&window.ClipboardItem){
+    try{
+      var item=new ClipboardItem({'text/html':new Blob([html],{type:'text/html'}),'text/plain':new Blob([plain],{type:'text/plain'})});
+      navigator.clipboard.write([item]).then(function(){done(true)},function(){done(copySelected(node))});
+      return;
+    }catch(e){}
+  }
+  done(copySelected(node));
+}
+function copyPlain(node,btn,hint){
+  var text=node.innerText;
+  if(navigator.clipboard&&navigator.clipboard.writeText){
+    navigator.clipboard.writeText(text).then(function(){flash(btn,hint,true)},function(){flash(btn,hint,copySelected(node))});
+  }else{flash(btn,hint,copySelected(node))}
+}
+var art=document.getElementById('article');
+[['copyArticle','articleHint'],['copyArticle2','articleHint2']].forEach(function(p){
+  var b=document.getElementById(p[0]),h=document.getElementById(p[1]);
+  b.addEventListener('click',function(){copyRich(art,b,h)});
+});
+document.querySelectorAll('button[data-for]').forEach(function(b){
+  var node=document.getElementById(b.dataset.for),h=b.parentNode.querySelector('.hint');
+  b.addEventListener('click',function(){copyPlain(node,b,h)});
+});
+})();
+</script>
