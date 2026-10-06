@@ -70,17 +70,17 @@ select{padding:8px;border:1px solid var(--line);border-radius:8px;background:var
 
 <main class="wrap">
   <h1 class="page">Клип «фото → карточка»: три шага</h1>
-  <p class="lead">Страница сама собирает вертикальное видео 15 секунд из ваших картинок, с надписями и плавной сменой кадров. Видео собирается у вас в браузере, картинки никуда не загружаются.</p>
+  <p class="lead">Страница сама собирает вертикальное видео из ваших картинок, с надписями и плавной сменой кадров. Видео собирается у вас в браузере, картинки никуда не загружаются.</p>
 
   <div class="card">
     <div class="step"><div class="num">1</div><div class="stepbody">
       <h2>Соберите видео из картинок</h2>
-      <p>Нажмите кнопку и выберите картинки в таком порядке: фото зарядки на листе бумаги, её карточка, фото принтера, одна-две карточки его серии, новогодняя карточка кофеварки. Только ваши товары, карточки лучше без водяного знака. Порядок можно поменять стрелками, надписи можно править.</p>
+      <p>Нажмите кнопку и выберите картинки в таком порядке: фото зарядки на листе бумаги, её карточка, фото принтера, <b>все шесть карточек принтера</b>, в самом конце новогодняя карточка кофеварки. Только ваши товары, карточки лучше без водяного знака. Порядок меняется стрелками.</p>
+      <p>Надпись, оставленная пустой, повторяет надпись предыдущего кадра: так «Серия из 6 карточек» останется на экране все шесть карточек. Чтобы убрать надпись совсем, впишите «-». Время каждого кадра выбирается справа: карточки серии по умолчанию идут по 1 секунде, кадры с надписью по 3. В конце сам добавится кадр с адресом сайта.</p>
       <div class="row"><label class="pick">Выбрать картинки<input id="pick" type="file" accept="image/*" multiple></label><span class="hint" id="pickHint"></span></div>
       <div class="frames" id="frames"></div>
-      <div class="row"><label for="sec" style="font-size:14px">Секунд на кадр</label>
-        <select id="sec"><option value="2">2</option><option value="3" selected>3</option><option value="4">4</option></select>
-        <button class="copy big" type="button" id="build" disabled>Собрать клип</button></div>
+      <div class="row"><label style="font-size:14px;display:flex;gap:8px;align-items:center"><input type="checkbox" id="endcard" checked> Добавить в конце кадр с адресом сайта</label></div>
+      <div class="row"><button class="copy big" type="button" id="build" disabled>Собрать клип</button></div>
       <div class="stage">
         <canvas id="cv" width="720" height="1280"></canvas>
         <div style="display:flex;flex-direction:column;gap:10px;min-width:0;flex:1 1 220px">
@@ -121,18 +121,38 @@ select{padding:8px;border:1px solid var(--line);border-radius:8px;background:var
 function el(id){return document.getElementById(id)}
 var W=720,H=1280,FADE=0.4;
 var DEF=['Обычное фото с телефона','Через 2 минуты: карточка для маркетплейса','И так с любым товаром','Серия из 6 карточек'];
-var LAST='Главная карточка бесплатно. absolutecard.ru';
 var frames=[],busy=false,blob=null,ext='webm',dl=null;
 var cv=el('cv'),ctx=cv.getContext('2d');
 try{if(window.claude&&window.claude.use){window.claude.use('downloads').then(function(d){dl=d},function(){dl=null})}}catch(e){}
 
-function defText(i,n){return i===n-1?LAST:(DEF[i]||'')}
-function refresh(){frames.forEach(function(f,i){if(!f.edited)f.text=defText(i,frames.length)})}
-function loadImg(file){return new Promise(function(res,rej){var u=URL.createObjectURL(file),im=new Image();im.onload=function(){res({img:im,url:u,text:'',edited:false})};im.onerror=function(){rej()};im.src=u})}
+function defText(i){return DEF[i]||''}
+function ownText(f){var t=(f.text||'').trim();return t!==''&&t!=='-'}
+function refresh(){frames.forEach(function(f,i){if(!f.edited)f.text=defText(i);if(!f.durEdited)f.dur=ownText(f)?3:1})}
+function loadImg(file){return new Promise(function(res,rej){var u=URL.createObjectURL(file),im=new Image();im.onload=function(){res({img:im,url:u,text:'',edited:false,dur:3,durEdited:false})};im.onerror=function(){rej()};im.src=u})}
+function items(){
+  var a=frames.slice(),prev='';
+  if(el('endcard').checked)a.push({end:true,dur:3});
+  a.forEach(function(f){if(f.end){f.eff='';return}var t=(f.text||'').trim();f.eff=t===''?prev:(t==='-'?'':t);prev=f.eff});
+  return a;
+}
+function total(){return items().reduce(function(s,f){return s+f.dur},0)}
 
 function lines(text,maxW,font){ctx.font=font;var words=text.split(' '),out=[],cur='';words.forEach(function(w){var t=cur?cur+' '+w:w;if(ctx.measureText(t).width>maxW&&cur){out.push(cur);cur=w}else cur=t});if(cur)out.push(cur);return out}
 function rr(x,y,w,h,r){ctx.beginPath();ctx.moveTo(x+r,y);ctx.arcTo(x+w,y,x+w,y+h,r);ctx.arcTo(x+w,y+h,x,y+h,r);ctx.arcTo(x,y+h,x,y,r);ctx.arcTo(x,y,x+w,y,r);ctx.closePath()}
+var FONT="600 46px 'IBM Plex Sans',system-ui,sans-serif";
+function drawEnd(alpha){
+  ctx.globalAlpha=alpha;
+  var g=ctx.createLinearGradient(0,0,0,H);g.addColorStop(0,'#0f6b5c');g.addColorStop(1,'#0a2d27');
+  ctx.fillStyle=g;ctx.fillRect(0,0,W,H);
+  ctx.fillStyle='#ffffff';ctx.textAlign='center';ctx.textBaseline='middle';
+  ctx.font="600 88px 'IBM Plex Sans',system-ui,sans-serif";
+  ctx.fillText('Главная карточка',W/2,H/2-90);ctx.fillText('бесплатно',W/2,H/2+20);
+  ctx.font="600 58px 'IBM Plex Sans',system-ui,sans-serif";ctx.fillStyle='#9ae6d3';
+  ctx.fillText('absolutecard.ru',W/2,H/2+170);
+  ctx.globalAlpha=1;
+}
 function drawOne(f,alpha){
+  if(f.end){drawEnd(alpha);return}
   ctx.globalAlpha=alpha;
   ctx.fillStyle='#101816';ctx.fillRect(0,0,W,H);
   var iw=f.img.naturalWidth,ih=f.img.naturalHeight;
@@ -142,45 +162,49 @@ function drawOne(f,alpha){
   try{ctx.filter='none'}catch(e){}
   var areaH=H*0.8,s=Math.min(W/iw,areaH/ih),dw=iw*s,dh=ih*s;
   ctx.drawImage(f.img,(W-dw)/2,(areaH-dh)/2+16,dw,dh);
-  if(f.text){
-    var font="600 46px 'IBM Plex Sans',system-ui,sans-serif";
-    var ls=lines(f.text,W-150,font),lh=58,bh=ls.length*lh+36,by=H-70-bh;
+  if(f.eff){
+    var ls=lines(f.eff,W-150,FONT),lh=58,bh=ls.length*lh+36,by=H-70-bh;
     ctx.fillStyle='rgba(8,14,12,0.78)';rr(32,by,W-64,bh,22);ctx.fill();
-    ctx.fillStyle='#ffffff';ctx.textAlign='center';ctx.textBaseline='middle';ctx.font=font;
+    ctx.fillStyle='#ffffff';ctx.textAlign='center';ctx.textBaseline='middle';ctx.font=FONT;
     ls.forEach(function(l,k){ctx.fillText(l,W/2,by+18+lh*k+lh/2)});
   }
   ctx.globalAlpha=1;
 }
-function sec(){return +el('sec').value}
-function scene(t){
-  var n=frames.length;if(!n)return;
-  var s=sec(),i=Math.min(n-1,Math.floor(t/s)),loc=t-i*s;
-  if(i>0&&loc<FADE){drawOne(frames[i-1],1);drawOne(frames[i],loc/FADE)}else drawOne(frames[i],1);
+function scene(t,list){
+  list=list||items();if(!list.length)return;
+  var acc=0,i=0;
+  for(;i<list.length-1;i++){if(t<acc+list[i].dur)break;acc+=list[i].dur}
+  var loc=t-acc;
+  if(i>0&&loc<FADE){drawOne(list[i-1],1);drawOne(list[i],loc/FADE)}else drawOne(list[i],1);
 }
 function preview(){if(frames.length)scene(0);else{ctx.fillStyle='#101816';ctx.fillRect(0,0,W,H)}}
 
+function state(){
+  el('build').disabled=busy||frames.length<2;
+  if(!busy){el('status').textContent=frames.length<2?'Сначала выберите картинки: нужно минимум две.':'Кадров: '+frames.length+', видео будет '+(Math.round(total()*10)/10)+' секунд. Нажмите «Собрать клип».'}
+}
 function render(){
   var box=el('frames');box.innerHTML='';
   frames.forEach(function(f,i){
     var r=document.createElement('div');r.className='fr';
     var im=document.createElement('img');im.src=f.url;im.alt='';
     var n=document.createElement('span');n.className='n';n.textContent=String(i+1);
-    var inp=document.createElement('input');inp.type='text';inp.id='t'+i;inp.value=f.text;inp.setAttribute('aria-label','Надпись на кадре '+(i+1));
-    inp.addEventListener('input',function(){f.text=inp.value;f.edited=true;preview()});
+    var inp=document.createElement('input');inp.type='text';inp.id='t'+i;inp.value=f.text;inp.placeholder='пусто: та же надпись, что выше';inp.setAttribute('aria-label','Надпись на кадре '+(i+1));
+    inp.addEventListener('input',function(){f.text=inp.value;f.edited=true;if(!f.durEdited){f.dur=ownText(f)?3:1;sel.value=String(f.dur)}preview();state()});
+    var sel=document.createElement('select');sel.id='d'+i;sel.setAttribute('aria-label','Секунд на кадре '+(i+1));
+    [1,1.5,2,3,4].forEach(function(v){var o=document.createElement('option');o.value=String(v);o.textContent=v+' с';sel.appendChild(o)});
+    sel.value=String(f.dur);
+    sel.addEventListener('change',function(){f.dur=+sel.value;f.durEdited=true;state()});
     function mk(label,aria,fn){var b=document.createElement('button');b.type='button';b.className='mini';b.textContent=label;b.setAttribute('aria-label',aria);b.addEventListener('click',fn);return b}
-    r.appendChild(n);r.appendChild(im);r.appendChild(inp);
+    r.appendChild(n);r.appendChild(im);r.appendChild(inp);r.appendChild(sel);
     r.appendChild(mk('▲','Выше',function(){if(i>0){var t=frames[i-1];frames[i-1]=frames[i];frames[i]=t;refresh();render();preview()}}));
     r.appendChild(mk('▼','Ниже',function(){if(i<frames.length-1){var t=frames[i+1];frames[i+1]=frames[i];frames[i]=t;refresh();render();preview()}}));
-    r.appendChild(mk('✕','Убрать',function(){frames.splice(i,1);refresh();render();preview();state()}));
+    r.appendChild(mk('✕','Убрать',function(){frames.splice(i,1);refresh();render();preview()}));
     box.appendChild(r);
   });
   state();
 }
-function state(){
-  el('build').disabled=busy||frames.length<2;
-  if(!busy){el('status').textContent=frames.length<2?'Сначала выберите картинки: нужно минимум две.':'Всего '+frames.length+' кадров, видео будет '+(frames.length*sec())+' секунд. Нажмите «Собрать клип».'}
-}
-el('sec').addEventListener('change',function(){state()});
+el('endcard').addEventListener('change',function(){state()});
 el('pick').addEventListener('change',function(e){
   var files=Array.prototype.slice.call(e.target.files||[]);if(!files.length)return;
   el('pickHint').textContent='Загружаю…';
@@ -204,16 +228,15 @@ el('build').addEventListener('click',function(){
   el('build').disabled=true;
   var ready=(document.fonts&&document.fonts.load)?document.fonts.load("600 46px 'IBM Plex Sans'").catch(function(){}):Promise.resolve();
   ready.then(function(){
-    var total=frames.length*sec(),chunks=[],stream=cv.captureStream(30),rec;
+    var list=items(),tot=list.reduce(function(s,f){return s+f.dur},0),chunks=[],stream=cv.captureStream(30),rec;
     try{rec=new MediaRecorder(stream,{mimeType:mime,videoBitsPerSecond:4000000})}catch(e){rec=new MediaRecorder(stream)}
     rec.ondataavailable=function(ev){if(ev.data&&ev.data.size)chunks.push(ev.data)};
     rec.onstop=function(){
       busy=false;el('barWrap').hidden=true;
       var type=(rec.mimeType||mime).split(';')[0];ext=type.indexOf('mp4')>=0?'mp4':'webm';
       blob=new Blob(chunks,{type:type});
-      if(!blob.size){el('status').textContent='Не получилось записать видео. Попробуйте ещё раз в Chrome.';state();return}
+      if(!blob.size){state();el('status').textContent='Не получилось записать видео. Попробуйте ещё раз в Chrome.';return}
       var v=el('out');v.src=URL.createObjectURL(blob);v.hidden=false;
-      el('status').textContent='Готово. Посмотрите видео и сохраните файл.';
       if(dl){el('save').hidden=false}else{el('tip').textContent='Сохранение кнопкой здесь недоступно: нажмите на видео правой кнопкой мыши и выберите «Сохранить видео как».'}
       state();el('status').textContent='Готово. Посмотрите видео и сохраните файл.';
     };
@@ -222,8 +245,8 @@ el('build').addEventListener('click',function(){
     var t0=performance.now();
     (function tick(){
       var t=(performance.now()-t0)/1000;
-      if(t>=total){scene(total-0.001);setTimeout(function(){rec.stop()},120);return}
-      scene(t);el('bar').style.width=Math.round(t/total*100)+'%';
+      if(t>=tot){scene(tot-0.001,list);setTimeout(function(){rec.stop()},120);return}
+      scene(t,list);el('bar').style.width=Math.round(t/tot*100)+'%';
       requestAnimationFrame(tick);
     })();
   });
@@ -238,9 +261,9 @@ el('save').addEventListener('click',function(){
   });
 });
 
-function sel(n){var r=document.createRange();r.selectNodeContents(n);var s=window.getSelection();s.removeAllRanges();s.addRange(r)}
+function selN(n){var r=document.createRange();r.selectNodeContents(n);var s=window.getSelection();s.removeAllRanges();s.addRange(r)}
 function flash(b,h,ok){if(ok){var t=b.dataset.t||b.textContent;b.dataset.t=t;b.textContent='Скопировано ✓';b.classList.add('ok');if(h)h.textContent='';setTimeout(function(){b.textContent=t;b.classList.remove('ok')},1800)}else if(h){h.textContent='Текст выделен: нажмите Ctrl+C.'}}
-function fb(n){sel(n);var ok=false;try{ok=document.execCommand('copy')}catch(e){}return ok}
+function fb(n){selN(n);var ok=false;try{ok=document.execCommand('copy')}catch(e){}return ok}
 document.querySelectorAll('button[data-for]').forEach(function(b){
   var n=el(b.dataset.for),h=b.parentNode.querySelector('.hint');
   b.addEventListener('click',function(){var t=n.innerText;
