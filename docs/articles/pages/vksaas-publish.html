@@ -49,123 +49,83 @@ button{font:inherit;cursor:pointer}
 .tags{display:flex;gap:6px;flex-wrap:wrap}
 .tag{font-family:var(--mono);font-size:13px;background:var(--block);border:1px solid var(--line);border-radius:6px;padding:2px 8px}
 @media (prefers-reduced-motion: reduce){*{transition:none!important}}
+
+.chip{display:inline-block;font-family:var(--mono);font-size:14px;background:var(--accent-soft);color:var(--fg);border:1px solid var(--line);border-radius:6px;padding:3px 10px}
+.prog{font-family:var(--mono);font-size:14px;color:var(--muted)}
+.bt{background:var(--surface);color:var(--fg);border:1px solid var(--line);border-radius:8px;padding:9px 14px;font-size:15px;min-height:40px}
+.bt:disabled{opacity:.4;cursor:default}
+.pv{font-family:Georgia,serif;font-size:17px;line-height:1.6;max-height:320px;overflow:auto}
 </style>
 
 <main class="wrap">
-  <h1 class="page">Статья для VKSaaS: вставить целиком за четыре шага</h1>
-  <p class="lead">Тема «семь вопросов до покупки сервиса для карточек товаров». Текст уникальный, нигде больше не публикуется. Одна ссылка в конце.</p>
+  <h1 class="page">Статья для VKSaaS: по блокам</h1>
+  <p class="lead">Редактор VKSaaS работает блоками, поэтому статья разбита на блоки: нажимаете «Скопировать», вставляете в нужный блок, идёте дальше.</p>
 
   <div class="card">
     <div class="step"><div class="num">1</div><div class="stepbody">
-      <h2>Откройте VKSaaS</h2>
-      <p>Войдите в свой кабинет и найдите, где добавить статью (раздел «Статьи» или «Блог»). Если не нашли, пришлите скриншот кабинета.</p>
-      <div class="row"><a class="copy" style="text-decoration:none;display:inline-block" href="https://vksaas.ru/" target="_blank" rel="noopener">Открыть vksaas.ru</a></div>
+      <h2>Поля сверху формы</h2>
+      <p>Название статьи H1:</p>
+      <div class="box" id="title">Семь вопросов до покупки сервиса для карточек товаров на Wildberries и Ozon</div>
+      <div class="row"><button class="copy" type="button" data-for="title">Копировать заголовок</button><span class="hint"></span></div>
+      <p>Категории: «Маркетплейсы». Введение:</p>
+      <div class="box" id="sub">Что спросить у любого сервиса, который собирает карточки по фото, прежде чем платить: от формата картинки до условий возврата денег.</div>
+      <div class="row"><button class="copy" type="button" data-for="sub">Копировать введение</button><span class="hint"></span></div>
+      <p>Изображение статьи: файл «cover-1200x675.png», который я прислал в чат.</p>
     </div></div>
   </div>
 
   <div class="card">
     <div class="step"><div class="num">2</div><div class="stepbody">
-      <h2>Заголовок, категория, введение</h2>
-      <p>Поле «Название статьи H1»:</p>
-      <div class="box" id="title">Семь вопросов до покупки сервиса для карточек товаров на Wildberries и Ozon</div>
-      <div class="row"><button class="copy" type="button" data-for="title">Копировать заголовок</button><span class="hint"></span></div>
-      <p>Поле «Категории»: выберите «Маркетплейсы».</p>
-      <p>Поле «Введение» (до 250 знаков, здесь 132):</p>
-      <div class="box" id="sub">Что спросить у любого сервиса, который собирает карточки по фото, прежде чем платить: от формата картинки до условий возврата денег.</div>
-      <div class="row"><button class="copy" type="button" data-for="sub">Копировать введение</button><span class="hint"></span></div>
-      <p>Поле «Изображение статьи» (не меньше 1000×600): загрузите главную карточку кофеварки. Если форма обрежет её плохо, напишите мне.</p>
+      <h2>Редактор статьи: блок за блоком</h2>
+      <p>Нажмите в форме «Добавить блок», выберите указанный тип, вставьте текст (Ctrl+V). Потом «Дальше».</p>
+      <div class="row"><span class="prog" id="prog"></span><span class="chip" id="type"></span></div>
+      <div class="box pv" id="cur"></div>
+      <div class="row"><button class="copy big" type="button" id="cp">Скопировать блок</button><span class="hint" id="hint"></span></div>
+      <div class="row"><button class="bt" type="button" id="prev">← Назад</button><button class="bt" type="button" id="next">Дальше →</button></div>
     </div></div>
   </div>
 
   <div class="card">
     <div class="step"><div class="num">3</div><div class="stepbody">
-      <h2>Текст статьи</h2>
-      <p>Нажмите на поле текста, нажмите кнопку ниже и вставьте (Ctrl+V). Две жёлтые строки «Вставьте картинку»: под ними загрузите картинки и удалите сами жёлтые строки. Подойдут шесть карточек кофеварки, те же, что на Product Radar.</p>
-      <div class="row"><button class="copy big" type="button" id="copyArticle">Скопировать всю статью</button><span class="hint" id="articleHint"></span></div>
+      <h2>Конец формы</h2>
+      <p>«Упомянутые сервисы»: найдите Cardroom, если есть, иначе пропустите. «Сохранить от имени»: ваше имя. Опубликуйте или отправьте на проверку и пришлите мне ссылку или скриншот.</p>
     </div></div>
   </div>
-
-  <div class="card">
-    <div class="step"><div class="num">4</div><div class="stepbody">
-      <h2>Проверьте и опубликуйте</h2>
-      <p>Если ссылка в конце не стала кликабельной, выделите слова «собрать главную карточку» и вставьте адрес:</p>
-      <div class="box" id="url">https://absolutecard.ru/?utm_source=vksaas&utm_medium=article&utm_campaign=sem_voprosov</div>
-      <div class="row"><button class="copy" type="button" data-for="url">Копировать ссылку</button><span class="hint"></span></div>
-      <p>Опубликуйте (или отправьте на проверку, если так устроено) и пришлите мне ссылку или скриншот.</p>
-    </div></div>
-  </div>
-
-  <div class="bar"><span class="lead">Вся статья:</span><button class="copy" type="button" id="copyArticle2">Скопировать всю статью</button><span class="hint" id="articleHint2"></span></div>
-
-  <div class="paper"><div id="article">
-<p>Сервисов, которые собирают карточки товаров по фото, уже много. Выглядят они похоже: загрузил снимок, получил яркую картинку. Разница обнаруживается позже, когда картинку надо поправить, проверить цифры или вернуть деньги. Я делаю такой сервис сам (Cardroom), поэтому знаю, какие вопросы стоит задать любому из них, включая мой. Вот семь.</p>
-
-<h2>1. Что нужно на входе</h2>
-<p>Выясните, какое именно фото принимает сервис. Хороший признак, когда подходит обычный снимок с телефона: без студии, света и идеального фона. Плохой признак, когда в требованиях сначала нужно «подготовить предметную съёмку». Тогда вы просто переносите работу фотографа на себя.</p>
-
-<h2>2. Можно ли увидеть результат до оплаты</h2>
-<p>Самый важный вопрос. Если сервис показывает готовую карточку бесплатно, пусть даже с водяным знаком, вы оцениваете реальное качество, а не примеры с сайта. Спросите, сколько раз можно пересобрать картинку до оплаты и что именно можно менять.</p>
-<span class="pic">Вставьте картинку: главная карточка кофеварки. Эту жёлтую строку удалите.</span>
-
-<h2>3. Из чего состоит серия</h2>
-<p>Одной главной картинки в карточке мало: покупатель листает галерею. Обычно в серии нужны главная, преимущество, устройство или комплектация, размеры и несколько служебных картинок. Уточните, сколько изображений входит в цену и можно ли заказать одну недостающую, а не весь набор заново.</p>
-
-<h2>4. Как исправить одну ошибку</h2>
-<p>Нейросеть ошибается: может дописать лишнее, перепутать надпись или нарисовать лишний предмет. Значит, правка должна быть простой. Проверьте, можно ли поправить картинку одной фразой («убери лишнее», «допиши модель») и ограничено ли число таких правок.</p>
-
-<h2>5. Кто отвечает за цифры и надписи</h2>
-<p>Мощность, размеры, объём, модель: всё это нейросеть может подставить уверенно и неверно. Честный сервис не обещает идеальной точности и прямо говорит, что характеристики нужно сверить с паспортом товара. Если же вам обещают «ничего проверять не нужно», воспринимайте это как предупреждение. За карточку отвечаете вы как продавец.</p>
-<span class="pic">Вставьте картинку: шесть карточек кофеварки рядом. Эту жёлтую строку удалите.</span>
-
-<h2>6. Подходит ли формат площадкам</h2>
-<p>Сверьте размер и пропорции с требованиями вашей площадки. Wildberries, Ozon и Яндекс Маркет описывают их в своих справках, и эти справки обновляются. Мои карточки вертикальные, 3:4, 1152×1536 пикселей, в WebP. Это подходит под вертикальную галерею, но перед загрузкой всё равно откройте справку своей площадки.</p>
-
-<h2>7. Что с деньгами, если не подошло</h2>
-<p>Узнайте условия возврата до оплаты, а не после. Какой срок, при каких условиях возвращают, что считается «получением результата» (например, скачивание файла). И нужна ли регистрация, подписка и автоплатежи: проще, когда платишь за готовую картинку, а не за доступ.</p>
-
-<h2>Как это устроено у меня</h2>
-<p>Чтобы вопросы не были пустыми, вот мои ответы. Фото нужно обычное. Главная карточка собирается бесплатно, с водяным знаком, за пару минут. Её можно один раз пересобрать до оплаты. Без знака она стоит 100 ₽, серия из шести карточек 600 ₽ (500 ₽, если главная уже куплена). После оплаты каждую карточку серии можно перерисовать один раз. Деньги возвращаю, пока файлы не скачаны. Регистрации и подписки нет. Цифры и надписи на карточках проверяйте по паспорту товара: сервис их подставляет сам, и это нужно сверять.</p>
-<p>Чем бы вы ни пользовались, пройдите по этим семи пунктам. Если на большую часть сервис отвечает ясно, с ним можно работать.</p>
-<p>Попробовать мой вариант: <a href="https://absolutecard.ru/?utm_source=vksaas&amp;utm_medium=article&amp;utm_campaign=sem_voprosov">собрать главную карточку</a>. Какого вопроса к таким сервисам здесь не хватает? Напишите в комментариях.</p>
-  </div></div>
 </main>
 
 <script>
 (function(){
+var B=[["Абзац", "Сервисов, которые собирают карточки товаров по фото, уже много. Выглядят они похоже: загрузил снимок, получил яркую картинку. Разница обнаруживается позже, когда картинку надо поправить, проверить цифры или вернуть деньги. Я делаю такой сервис сам (Cardroom), поэтому знаю, какие вопросы стоит задать любому из них, включая мой. Вот семь.", true], ["Заголовок H2", "1. Что нужно на входе", true], ["Абзац", "Выясните, какое именно фото принимает сервис. Хороший признак, когда подходит обычный снимок с телефона: без студии, света и идеального фона. Плохой признак, когда в требованиях сначала нужно «подготовить предметную съёмку». Тогда вы просто переносите работу фотографа на себя.", true], ["Заголовок H2", "2. Можно ли увидеть результат до оплаты", true], ["Абзац", "Самый важный вопрос. Если сервис показывает готовую карточку бесплатно, пусть даже с водяным знаком, вы оцениваете реальное качество, а не примеры с сайта. Спросите, сколько раз можно пересобрать картинку до оплаты и что именно можно менять.", true], ["Изображение", "главная карточка кофеварки", false], ["Заголовок H2", "3. Из чего состоит серия", true], ["Абзац", "Одной главной картинки в карточке мало: покупатель листает галерею. Обычно в серии нужны главная, преимущество, устройство или комплектация, размеры и несколько служебных картинок. Уточните, сколько изображений входит в цену и можно ли заказать одну недостающую, а не весь набор заново.", true], ["Заголовок H2", "4. Как исправить одну ошибку", true], ["Абзац", "Нейросеть ошибается: может дописать лишнее, перепутать надпись или нарисовать лишний предмет. Значит, правка должна быть простой. Проверьте, можно ли поправить картинку одной фразой («убери лишнее», «допиши модель») и ограничено ли число таких правок.", true], ["Заголовок H2", "5. Кто отвечает за цифры и надписи", true], ["Абзац", "Мощность, размеры, объём, модель: всё это нейросеть может подставить уверенно и неверно. Честный сервис не обещает идеальной точности и прямо говорит, что характеристики нужно сверить с паспортом товара. Если же вам обещают «ничего проверять не нужно», воспринимайте это как предупреждение. За карточку отвечаете вы как продавец.", true], ["Изображение", "шесть карточек кофеварки рядом", false], ["Заголовок H2", "6. Подходит ли формат площадкам", true], ["Абзац", "Сверьте размер и пропорции с требованиями вашей площадки. Wildberries, Ozon и Яндекс Маркет описывают их в своих справках, и эти справки обновляются. Мои карточки вертикальные, 3:4, 1152×1536 пикселей, в WebP. Это подходит под вертикальную галерею, но перед загрузкой всё равно откройте справку своей площадки.", true], ["Заголовок H2", "7. Что с деньгами, если не подошло", true], ["Абзац", "Узнайте условия возврата до оплаты, а не после. Какой срок, при каких условиях возвращают, что считается «получением результата» (например, скачивание файла). И нужна ли регистрация, подписка и автоплатежи: проще, когда платишь за готовую картинку, а не за доступ.", true], ["Заголовок H2", "Как это устроено у меня", true], ["Абзац", "Чтобы вопросы не были пустыми, вот мои ответы. Фото нужно обычное. Главная карточка собирается бесплатно, с водяным знаком, за пару минут. Её можно один раз пересобрать до оплаты. Без знака она стоит 100 ₽, серия из шести карточек 600 ₽ (500 ₽, если главная уже куплена). После оплаты каждую карточку серии можно перерисовать один раз. Деньги возвращаю, пока файлы не скачаны. Регистрации и подписки нет. Цифры и надписи на карточках проверяйте по паспорту товара: сервис их подставляет сам, и это нужно сверять.", true], ["Абзац", "Чем бы вы ни пользовались, пройдите по этим семи пунктам. Если на большую часть сервис отвечает ясно, с ним можно работать.", true], ["Абзац", "Попробовать мой вариант: https://absolutecard.ru/?utm_source=vksaas&utm_medium=article&utm_campaign=sem_voprosov Какого вопроса к таким сервисам здесь не хватает? Напишите в комментариях.", true]];
+var i=0;
+var cur=document.getElementById('cur'),ty=document.getElementById('type'),pr=document.getElementById('prog'),cp=document.getElementById('cp'),h=document.getElementById('hint');
 function sel(node){var r=document.createRange();r.selectNodeContents(node);var s=window.getSelection();s.removeAllRanges();s.addRange(r)}
+function sc(node){sel(node);var ok=false;try{ok=document.execCommand('copy')}catch(e){}return ok}
 function flash(btn,hint,ok){
   if(ok){var t=btn.dataset.t||btn.textContent;btn.dataset.t=t;btn.textContent='Скопировано ✓';btn.classList.add('ok');if(hint)hint.textContent='';setTimeout(function(){btn.textContent=t;btn.classList.remove('ok')},1800)}
   else if(hint){hint.textContent='Текст выделен: нажмите Ctrl+C.'}
 }
-function copySelected(node){
-  sel(node);var ok=false;try{ok=document.execCommand('copy')}catch(e){}return ok;
-}
-function copyRich(node,btn,hint){
-  var html=node.innerHTML, plain=node.innerText;
-  var done=function(ok){flash(btn,hint,ok)};
-  if(navigator.clipboard&&window.ClipboardItem){
-    try{
-      var item=new ClipboardItem({'text/html':new Blob([html],{type:'text/html'}),'text/plain':new Blob([plain],{type:'text/plain'})});
-      navigator.clipboard.write([item]).then(function(){done(true)},function(){done(copySelected(node))});
-      return;
-    }catch(e){}
-  }
-  done(copySelected(node));
-}
-function copyPlain(node,btn,hint){
-  var text=node.innerText;
+function copyText(text,node,btn,hint){
   if(navigator.clipboard&&navigator.clipboard.writeText){
-    navigator.clipboard.writeText(text).then(function(){flash(btn,hint,true)},function(){flash(btn,hint,copySelected(node))});
-  }else{flash(btn,hint,copySelected(node))}
+    navigator.clipboard.writeText(text).then(function(){flash(btn,hint,true)},function(){flash(btn,hint,sc(node))});
+  }else{flash(btn,hint,sc(node))}
 }
-var art=document.getElementById('article');
-[['copyArticle','articleHint'],['copyArticle2','articleHint2']].forEach(function(p){
-  var b=document.getElementById(p[0]),h=document.getElementById(p[1]);
-  b.addEventListener('click',function(){copyRich(art,b,h)});
-});
+function show(){
+  var b=B[i];
+  pr.textContent='Блок '+(i+1)+' из '+B.length;
+  ty.textContent='Тип: '+b[0];
+  h.textContent='';
+  if(b[2]){cur.textContent=b[1];cp.hidden=false}
+  else{cur.textContent='Здесь загрузите картинку: '+b[1]+'. Копировать нечего, нажмите «Дальше».';cp.hidden=true}
+  document.getElementById('prev').disabled=i===0;
+  document.getElementById('next').disabled=i===B.length-1;
+}
+cp.addEventListener('click',function(){copyText(B[i][1],cur,cp,h)});
+document.getElementById('prev').addEventListener('click',function(){if(i>0){i--;show()}});
+document.getElementById('next').addEventListener('click',function(){if(i<B.length-1){i++;show()}});
 document.querySelectorAll('button[data-for]').forEach(function(b){
-  var node=document.getElementById(b.dataset.for),h=b.parentNode.querySelector('.hint');
-  b.addEventListener('click',function(){copyPlain(node,b,h)});
+  var node=document.getElementById(b.dataset.for),hh=b.parentNode.querySelector('.hint');
+  b.addEventListener('click',function(){copyText(node.innerText,node,b,hh)});
 });
+show();
 })();
 </script>
