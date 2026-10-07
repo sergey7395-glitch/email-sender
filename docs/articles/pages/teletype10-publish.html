@@ -1,0 +1,183 @@
+<title>Статья 9 для Teletype</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: three short steps on top, then the whole article as one block with a single copy button. */
+:root{
+  --bg:#f3f5f4; --surface:#ffffff; --fg:#1c2623; --muted:#5d6a66; --line:#d9dfdc;
+  --accent:#0f6b5c; --accent-fg:#ffffff; --accent-soft:#e1efeb; --warn:#8a5a00; --warn-soft:#fbf0d9; --ok:#1f7a45;
+  --block:#eef2f0;
+  --sans:'IBM Plex Sans',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+  --mono:'IBM Plex Mono',ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#111917; --surface:#18221f; --fg:#e6ece9; --muted:#97a6a1; --line:#2a3834;
+  --accent:#4cc3ac; --accent-fg:#06211b; --accent-soft:#1d3530; --warn:#e7b85a; --warn-soft:#352b14; --ok:#5fcf8c; --block:#1f2c28; color-scheme:dark;}}
+:root[data-theme="dark"]{
+  --bg:#111917; --surface:#18221f; --fg:#e6ece9; --muted:#97a6a1; --line:#2a3834;
+  --accent:#4cc3ac; --accent-fg:#06211b; --accent-soft:#1d3530; --warn:#e7b85a; --warn-soft:#352b14; --ok:#5fcf8c; --block:#1f2c28; color-scheme:dark;}
+body{background:var(--bg);color:var(--fg);font-family:var(--sans);font-size:16px;line-height:1.55;padding-inline:16px;padding-block:24px 56px}
+.wrap{max-width:760px;margin-inline:auto;display:flex;flex-direction:column;gap:16px}
+h1.page{font-size:24px;line-height:1.25;margin:0;font-weight:600;text-wrap:balance}
+.lead{margin:0;color:var(--muted);max-width:62ch}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px;display:flex;flex-direction:column;gap:10px}
+.step{display:flex;gap:12px;align-items:flex-start}
+.num{flex:0 0 auto;width:28px;height:28px;border-radius:50%;background:var(--accent);color:var(--accent-fg);font-family:var(--mono);font-weight:500;font-size:14px;display:grid;place-items:center}
+.step h2{margin:0;font-size:17px;line-height:1.3;font-weight:600;padding-top:2px}
+.step p{margin:4px 0 0;font-size:15px;color:var(--muted)}
+.stepbody{flex:1;min-width:0;display:flex;flex-direction:column;gap:8px}
+.box{background:var(--block);border:1px solid var(--line);border-radius:8px;padding:10px 12px;font-size:15px;overflow-wrap:anywhere;white-space:pre-wrap}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+button{font:inherit;cursor:pointer}
+.copy{background:var(--accent);color:var(--accent-fg);border:0;border-radius:8px;padding:9px 16px;font-weight:600;font-size:15px;min-height:40px}
+.copy.big{font-size:17px;padding:13px 22px;min-height:50px}
+.copy.ok{background:var(--ok);color:#fff}
+.copy:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.hint{font-size:13px;color:var(--warn)}
+.note{background:var(--warn-soft);border-radius:8px;padding:10px 12px;font-size:14px}
+.note b{font-weight:600}
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:3;background:var(--bg);padding-block:8px;display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.paper{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:20px 22px}
+#article{font-family:Georgia,'Times New Roman',serif;font-size:17px;line-height:1.65;color:var(--fg)}
+#article h2{font-family:var(--sans);font-size:21px;line-height:1.3;margin:26px 0 10px;font-weight:600}
+#article p{margin:0 0 14px}
+#article ol{margin:0 0 14px;padding-left:24px}
+#article li{margin-bottom:6px}
+#article a{color:var(--accent)}
+#article .pic{font-family:var(--sans);font-size:14px;color:var(--warn);background:var(--warn-soft);padding:6px 10px;border-radius:6px;margin:0 0 14px;display:block}
+.tags{display:flex;gap:6px;flex-wrap:wrap}
+.tag{font-family:var(--mono);font-size:13px;background:var(--block);border:1px solid var(--line);border-radius:6px;padding:2px 8px}
+@media (prefers-reduced-motion: reduce){*{transition:none!important}}
+</style>
+
+<main class="wrap">
+  <h1 class="page">Десятая статья для Teletype: вставить целиком за четыре шага</h1>
+  <p class="lead">Тема «шесть картинок в карточке овощерезки и вопросы покупателя». Новый товар вместо принтера, зарядки и кофеварки. Одна ссылка в конце.</p>
+
+  <div class="card">
+    <div class="step"><div class="num">1</div><div class="stepbody">
+      <h2>Откройте Teletype</h2>
+      <p>Перейдите по ссылке (вы уже зарегистрированы) и начните новую статью. Дальше возвращайтесь на эту страницу.</p>
+      <div class="row"><a class="copy" style="text-decoration:none;display:inline-block" href="https://teletype.in/" target="_blank" rel="noopener">Открыть teletype.in</a></div>
+    </div></div>
+  </div>
+
+  <div class="card">
+    <div class="step"><div class="num">2</div><div class="stepbody">
+      <h2>Заголовок и подзаголовок</h2>
+      <p>Заголовок вставьте в строку заголовка:</p>
+      <div class="box" id="title">Шесть картинок в карточке товара: разбор серии для овощерезки</div>
+      <div class="row"><button class="copy" type="button" data-for="title">Копировать заголовок</button><span class="hint"></span></div>
+      <p>Если есть строка подзаголовка, вставьте в неё (если нет, пропустите):</p>
+      <div class="box" id="sub">Что показывает каждая картинка серии и на какой вопрос покупателя отвечает.</div>
+      <div class="row"><button class="copy" type="button" data-for="sub">Копировать подзаголовок</button><span class="hint"></span></div>
+    </div></div>
+  </div>
+
+  <div class="card">
+    <div class="step"><div class="num">3</div><div class="stepbody">
+      <h2>Текст статьи</h2>
+      <p>Нажмите на поле текста, удалите старое (Ctrl+A, Delete), нажмите кнопку ниже и вставьте (Ctrl+V). Шесть жёлтых строк «Вставьте картинку»: под каждой загрузите карточку овощерезки с тем номером, который указан в строке (карточки вы мне присылали). Потом удалите жёлтые строки.</p>
+      <div class="row"><button class="copy big" type="button" id="copyArticle">Скопировать всю статью</button><span class="hint" id="articleHint"></span></div>
+    </div></div>
+  </div>
+
+  <div class="card">
+    <div class="step"><div class="num">4</div><div class="stepbody">
+      <h2>Хэштеги и публикация</h2>
+      <p>Добавьте хэштеги:</p>
+      <div class="box" id="tags">#маркетплейсы #карточкатовара #инфографика #овощерезка #wildberries #ozon</div>
+      <div class="row"><button class="copy" type="button" data-for="tags">Копировать хэштеги</button><span class="hint"></span></div>
+      <p>Если ссылка на сайт не стала кликабельной, выделите слова «собрать главную карточку бесплатно», нажмите Ctrl+K и вставьте <span style="font-family:var(--mono);overflow-wrap:anywhere">https://absolutecard.ru/?utm_source=teletype&amp;utm_medium=article&amp;utm_campaign=seriya_ovoshcherezka</span>. Прочитайте статью сверху вниз, опубликуйте и пришлите мне ссылку.</p>
+    </div></div>
+  </div>
+
+  <div class="bar"><span class="lead">Вся статья:</span><button class="copy" type="button" id="copyArticle2">Скопировать всю статью</button><span class="hint" id="articleHint2"></span></div>
+
+  <div class="paper"><div id="article">
+<p>Покупатель на маркетплейсе редко читает описание сразу. Он листает картинки и ищет ответы на несколько простых вопросов: что это, что в комплекте, как пользоваться, как управлять, подойдёт ли мне, сложно ли ухаживать. Разберу серию из шести карточек для электрической овощерезки: что на каждой написано и какой вопрос она закрывает. Серия собрана в сервисе Cardroom по фото товара.</p>
+
+<h2>Карточка 1. Что это и чем хорошо</h2>
+<span class="pic">Вставьте картинку: карточка 1 (главная, «Шинковка без усилий»). Эту жёлтую строку удалите.</span>
+<p>Главная картинка отвечает на вопрос «что это и зачем». Здесь крупно название, подзаголовок про быструю нарезку и шинковку овощей для салатов и гарниров, две плашки («Быстро» и «Компактно») и две пометки на корпусе: прозрачная чаша и устойчивые ножки. Внизу тарелка с готовой морковной соломкой. Это важная деталь: прибор показан вместе с результатом, а не просто стоит на фоне.</p>
+
+<h2>Карточка 2. Что в комплекте</h2>
+<span class="pic">Вставьте картинку: карточка 2 (сменные барабаны). Эту жёлтую строку удалите.</span>
+<p>Вторая картинка показывает три сменных барабана и под каждым результат: соломка для моркови по-корейски и салатов, ломтики для огурцов и картофеля, мелкая тёрка для сыра, шоколада и орехов. Покупатель за секунду понимает, что прибор делает три вида нарезки, и видит это глазами, без чтения. Ниже три коротких плашки: барабаны из нержавеющей стали, легко меняются, просты в уходе.</p>
+
+<h2>Карточка 3. Как пользоваться</h2>
+<span class="pic">Вставьте картинку: карточка 3 (широкая горловина). Эту жёлтую строку удалите.</span>
+<p>Третья показывает действие: в прозрачную горловину помещается целый кабачок. Подписи объясняют, почему это удобно: высокая прямоугольная горловина, крупные куски проходят без предварительной нарезки, есть толкатель-крышка. Хорошая практика для любой техники: не заявлять «удобно», а показывать, что именно делает использование простым.</p>
+
+<h2>Карточка 4. Как управлять</h2>
+<span class="pic">Вставьте картинку: карточка 4 («Продуманный корпус», управление). Эту жёлтую строку удалите.</span>
+<p>Четвёртая показывает корпус вблизи: управление на верхней панели, металлический поворотный переключатель включает прибор, рядом чёрная кнопка. Дополнительно сказано, что питание от сети 220–240 В, и в кадре розетка. Покупатель видит, что кнопок мало и разобраться просто.</p>
+
+<h2>Карточка 5. Кому и для чего</h2>
+<span class="pic">Вставьте картинку: карточка 5 («Для всей семьи»). Эту жёлтую строку удалите.</span>
+<p>Пятая расширяет аудиторию. Сверху ряд продуктов, которые можно нарезать: морковь, свёкла, капуста, кабачки, картофель, огурцы, яблоки, твёрдый сыр, орехи. Ниже три сценария: домашняя кухня, любители салатов и заготовок, небольшие кафе. Покупатель примеряет прибор на себя. Но именно такие картинки легко сделать слишком смелыми: например, «подходит для небольших кафе» стоит оставлять только тогда, если это подтверждают характеристики и ресурс прибора.</p>
+
+<h2>Карточка 6. Как ухаживать</h2>
+<span class="pic">Вставьте картинку: карточка 6 (разборка и уход). Эту жёлтую строку удалите.</span>
+<p>Шестая закрывает возражение «а мыть замучаешься». Прибор показан разобранным: корпус, три барабана, толкатель, насадочный блок. Рядом четыре короткие пометки: блок снимается, барабаны снимаются и легко моются, толкатель съёмный, отдельная чаша не нужна. Любой может сам увидеть, из каких деталей состоит прибор и что из них придётся мыть.</p>
+
+<h2>Что здесь нужно проверить руками</h2>
+<p>Текст на картинках собирает нейросеть, и в нём бывают неточности. Для такой серии я бы сверил с паспортом и упаковкой несколько вещей: материал барабанов, что именно делает чёрная кнопка (на картинке подписано только, что она есть), напряжение сети, число насадок в комплекте (на картинках три барабана, толкатель и корпус), формулировки про прозрачность и устойчивость, назначение «для небольших кафе». Особенно внимательно смотрите карточку про уход: на ней не должно быть деталей, которых нет в коробке.</p>
+
+<h2>Схема, которую можно взять для любого товара</h2>
+<ol>
+<li>Что это и главная выгода, вместе с результатом.</li>
+<li>Что в комплекте или какие бывают варианты.</li>
+<li>Как пользоваться, показано на действии.</li>
+<li>Как управлять: где кнопки и что они делают.</li>
+<li>Кому и для каких задач подходит.</li>
+<li>Уход или то, что внутри. Для некоторых товаров вместо этого подойдут размеры или характеристики.</li>
+</ol>
+<p>Шесть картинок вместо одной не обязательно лучше. Лучше то, что каждая отвечает на отдельный вопрос покупателя, а не повторяет предыдущую.</p>
+
+<h2>Попробовать</h2>
+<p>Я делаю сервис Cardroom: он собирает карточки по одному фото товара, вертикальные 3:4, 1152×1536 пикселей. Главная карточка собирается бесплатно, с водяным знаком, её можно один раз пересобрать до оплаты. Без знака 100 ₽, серия из шести карточек 600 ₽: <a href="https://absolutecard.ru/?utm_source=teletype&amp;utm_medium=article&amp;utm_campaign=seriya_ovoshcherezka">собрать главную карточку бесплатно</a>.</p>
+<p>Какой вопрос покупателя вы бы вынесли на отдельную картинку? Напишите в комментариях.</p>
+  </div></div>
+</main>
+
+<script>
+(function(){
+function sel(node){var r=document.createRange();r.selectNodeContents(node);var s=window.getSelection();s.removeAllRanges();s.addRange(r)}
+function flash(btn,hint,ok){
+  if(ok){var t=btn.dataset.t||btn.textContent;btn.dataset.t=t;btn.textContent='Скопировано ✓';btn.classList.add('ok');if(hint)hint.textContent='';setTimeout(function(){btn.textContent=t;btn.classList.remove('ok')},1800)}
+  else if(hint){hint.textContent='Текст выделен: нажмите Ctrl+C.'}
+}
+function copySelected(node){
+  sel(node);var ok=false;try{ok=document.execCommand('copy')}catch(e){}return ok;
+}
+function copyRich(node,btn,hint){
+  var html=node.innerHTML, plain=node.innerText;
+  var done=function(ok){flash(btn,hint,ok)};
+  if(navigator.clipboard&&window.ClipboardItem){
+    try{
+      var item=new ClipboardItem({'text/html':new Blob([html],{type:'text/html'}),'text/plain':new Blob([plain],{type:'text/plain'})});
+      navigator.clipboard.write([item]).then(function(){done(true)},function(){done(copySelected(node))});
+      return;
+    }catch(e){}
+  }
+  done(copySelected(node));
+}
+function copyPlain(node,btn,hint){
+  var text=node.innerText;
+  if(navigator.clipboard&&navigator.clipboard.writeText){
+    navigator.clipboard.writeText(text).then(function(){flash(btn,hint,true)},function(){flash(btn,hint,copySelected(node))});
+  }else{flash(btn,hint,copySelected(node))}
+}
+var art=document.getElementById('article');
+[['copyArticle','articleHint'],['copyArticle2','articleHint2']].forEach(function(p){
+  var b=document.getElementById(p[0]),h=document.getElementById(p[1]);
+  b.addEventListener('click',function(){copyRich(art,b,h)});
+});
+document.querySelectorAll('button[data-for]').forEach(function(b){
+  var node=document.getElementById(b.dataset.for),h=b.parentNode.querySelector('.hint');
+  b.addEventListener('click',function(){copyPlain(node,b,h)});
+});
+})();
+</script>
