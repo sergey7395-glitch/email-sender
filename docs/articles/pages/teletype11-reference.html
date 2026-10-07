@@ -1,0 +1,104 @@
+<title>Абзац про референс</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: three short steps on top, then the whole article as one block with a single copy button. */
+:root{
+  --bg:#f3f5f4; --surface:#ffffff; --fg:#1c2623; --muted:#5d6a66; --line:#d9dfdc;
+  --accent:#0f6b5c; --accent-fg:#ffffff; --accent-soft:#e1efeb; --warn:#8a5a00; --warn-soft:#fbf0d9; --ok:#1f7a45;
+  --block:#eef2f0;
+  --sans:'IBM Plex Sans',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+  --mono:'IBM Plex Mono',ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#111917; --surface:#18221f; --fg:#e6ece9; --muted:#97a6a1; --line:#2a3834;
+  --accent:#4cc3ac; --accent-fg:#06211b; --accent-soft:#1d3530; --warn:#e7b85a; --warn-soft:#352b14; --ok:#5fcf8c; --block:#1f2c28; color-scheme:dark;}}
+:root[data-theme="dark"]{
+  --bg:#111917; --surface:#18221f; --fg:#e6ece9; --muted:#97a6a1; --line:#2a3834;
+  --accent:#4cc3ac; --accent-fg:#06211b; --accent-soft:#1d3530; --warn:#e7b85a; --warn-soft:#352b14; --ok:#5fcf8c; --block:#1f2c28; color-scheme:dark;}
+body{background:var(--bg);color:var(--fg);font-family:var(--sans);font-size:16px;line-height:1.55;padding-inline:16px;padding-block:24px 56px}
+.wrap{max-width:760px;margin-inline:auto;display:flex;flex-direction:column;gap:16px}
+h1.page{font-size:24px;line-height:1.25;margin:0;font-weight:600;text-wrap:balance}
+.lead{margin:0;color:var(--muted);max-width:62ch}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px;display:flex;flex-direction:column;gap:10px}
+.step{display:flex;gap:12px;align-items:flex-start}
+.num{flex:0 0 auto;width:28px;height:28px;border-radius:50%;background:var(--accent);color:var(--accent-fg);font-family:var(--mono);font-weight:500;font-size:14px;display:grid;place-items:center}
+.step h2{margin:0;font-size:17px;line-height:1.3;font-weight:600;padding-top:2px}
+.step p{margin:4px 0 0;font-size:15px;color:var(--muted)}
+.stepbody{flex:1;min-width:0;display:flex;flex-direction:column;gap:8px}
+.box{background:var(--block);border:1px solid var(--line);border-radius:8px;padding:10px 12px;font-size:15px;overflow-wrap:anywhere;white-space:pre-wrap}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+button{font:inherit;cursor:pointer}
+.copy{background:var(--accent);color:var(--accent-fg);border:0;border-radius:8px;padding:9px 16px;font-weight:600;font-size:15px;min-height:40px}
+.copy.big{font-size:17px;padding:13px 22px;min-height:50px}
+.copy.ok{background:var(--ok);color:#fff}
+.copy:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.hint{font-size:13px;color:var(--warn)}
+.note{background:var(--warn-soft);border-radius:8px;padding:10px 12px;font-size:14px}
+.note b{font-weight:600}
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:3;background:var(--bg);padding-block:8px;display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.paper{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:20px 22px}
+#article{font-family:Georgia,'Times New Roman',serif;font-size:17px;line-height:1.65;color:var(--fg)}
+#article h2{font-family:var(--sans);font-size:21px;line-height:1.3;margin:26px 0 10px;font-weight:600}
+#article p{margin:0 0 14px}
+#article ol{margin:0 0 14px;padding-left:24px}
+#article li{margin-bottom:6px}
+#article a{color:var(--accent)}
+#article .pic{font-family:var(--sans);font-size:14px;color:var(--warn);background:var(--warn-soft);padding:6px 10px;border-radius:6px;margin:0 0 14px;display:block}
+.tags{display:flex;gap:6px;flex-wrap:wrap}
+.tag{font-family:var(--mono);font-size:13px;background:var(--block);border:1px solid var(--line);border-radius:6px;padding:2px 8px}
+@media (prefers-reduced-motion: reduce){*{transition:none!important}}
+input.link{font:inherit;font-size:15px;width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:8px;background:var(--surface);color:var(--fg);min-height:42px}
+</style>
+
+<main class="wrap">
+  <h1 class="page">Абзац про референс для статьи 11: три шага</h1>
+  <p class="lead">Короткий раздел, который объясняет, как получились синее и жёлтое оформление. Вставляется в уже готовую статью, переделывать остальное не нужно.</p>
+
+  <div class="card">
+    <div class="step"><div class="num">1</div><div class="stepbody">
+      <h2>Найдите место в статье</h2>
+      <p>Откройте вашу статью в Teletype на редактирование. Поставьте курсор в конец раздела «Чем отличаются исходные фото» (после слов «На синей модель появилась сразу.»), с новой строки.</p>
+    </div></div>
+  </div>
+
+  <div class="card">
+    <div class="step"><div class="num">2</div><div class="stepbody">
+      <h2>Скопируйте и вставьте раздел</h2>
+      <p>Нажмите кнопку и вставьте (Ctrl+V). Заголовок «Как получились два оформления» должен стать заголовком раздела, как соседние. Если вставился обычным текстом, выделите его и сделайте заголовком.</p>
+      <div class="row"><button class="copy big" type="button" id="cp">Скопировать раздел</button><span class="hint" id="h"></span></div>
+      <div class="paper"><div id="article">
+<h2>Как получились два оформления</h2>
+<p>На стартовом экране сервиса вы пишете название товара и прикрепляете его фото. Затем кнопка «Выбрать дизайн», и открывается страница с образцами оформления. Образцы можно взять из трёх мест. Первое: свой образец, который вы загружаете сами. Второе: база сервиса, в ней больше 5000 образцов для более чем 400 категорий товаров, и сначала показываются те, что подходят к вашей категории. Третье: универсальные дизайны, они открываются отдельной кнопкой «Универсальные», а если товар сервису незнаком, показываются сразу. Вы выбираете понравившийся образец, и по нему и по вашему фото сервис рисует главную карточку. Остальные пять карточек серии собираются после неё.</p>
+<p>Две серии принтера отличаются потому, что для них выбраны разные образцы: от этого получились жёлтое и синее оформление, разная композиция и шрифты. Образец задаёт оформление, а цифры на карточках в обеих сериях при этом совпали.</p>
+      </div></div>
+    </div></div>
+  </div>
+
+  <div class="card">
+    <div class="step"><div class="num">3</div><div class="stepbody">
+      <h2>Проверьте и опубликуйте</h2>
+      <p>Если в тексте вышло неточно (например, для серий выбирали образцы иначе или в базе сейчас другое число образцов), напишите мне, я поправлю абзац. Затем нажмите «Опубликовать» (или «Сохранить» для уже опубликованной) и пришлите мне ссылку.</p>
+    </div></div>
+  </div>
+</main>
+
+<script>
+(function(){
+var art=document.getElementById('article'),b=document.getElementById('cp'),h=document.getElementById('h');
+function sel(n){var r=document.createRange();r.selectNodeContents(n);var s=window.getSelection();s.removeAllRanges();s.addRange(r)}
+function fb(){sel(art);var ok=false;try{ok=document.execCommand('copy')}catch(e){}return ok}
+function flash(ok){if(ok){var t=b.dataset.t||b.textContent;b.dataset.t=t;b.textContent='Скопировано ✓';b.classList.add('ok');h.textContent='';setTimeout(function(){b.textContent=t;b.classList.remove('ok')},1800)}else{h.textContent='Текст выделен: нажмите Ctrl+C.'}}
+b.addEventListener('click',function(){
+  var html=art.innerHTML,plain=art.innerText;
+  if(navigator.clipboard&&window.ClipboardItem){
+    try{
+      var it=new ClipboardItem({'text/html':new Blob([html],{type:'text/html'}),'text/plain':new Blob([plain],{type:'text/plain'})});
+      navigator.clipboard.write([it]).then(function(){flash(true)},function(){flash(fb())});return;
+    }catch(e){}
+  }
+  flash(fb());
+});
+})();
+</script>
