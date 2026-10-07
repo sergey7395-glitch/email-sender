@@ -1,0 +1,132 @@
+<title>Услуги для Kwork и FL.ru</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: three short steps on top, then the whole article as one block with a single copy button. */
+:root{
+  --bg:#f3f5f4; --surface:#ffffff; --fg:#1c2623; --muted:#5d6a66; --line:#d9dfdc;
+  --accent:#0f6b5c; --accent-fg:#ffffff; --accent-soft:#e1efeb; --warn:#8a5a00; --warn-soft:#fbf0d9; --ok:#1f7a45;
+  --block:#eef2f0;
+  --sans:'IBM Plex Sans',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+  --mono:'IBM Plex Mono',ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#111917; --surface:#18221f; --fg:#e6ece9; --muted:#97a6a1; --line:#2a3834;
+  --accent:#4cc3ac; --accent-fg:#06211b; --accent-soft:#1d3530; --warn:#e7b85a; --warn-soft:#352b14; --ok:#5fcf8c; --block:#1f2c28; color-scheme:dark;}}
+:root[data-theme="dark"]{
+  --bg:#111917; --surface:#18221f; --fg:#e6ece9; --muted:#97a6a1; --line:#2a3834;
+  --accent:#4cc3ac; --accent-fg:#06211b; --accent-soft:#1d3530; --warn:#e7b85a; --warn-soft:#352b14; --ok:#5fcf8c; --block:#1f2c28; color-scheme:dark;}
+body{background:var(--bg);color:var(--fg);font-family:var(--sans);font-size:16px;line-height:1.55;padding-inline:16px;padding-block:24px 56px}
+.wrap{max-width:760px;margin-inline:auto;display:flex;flex-direction:column;gap:16px}
+h1.page{font-size:24px;line-height:1.25;margin:0;font-weight:600;text-wrap:balance}
+.lead{margin:0;color:var(--muted);max-width:62ch}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px;display:flex;flex-direction:column;gap:10px}
+.step{display:flex;gap:12px;align-items:flex-start}
+.num{flex:0 0 auto;width:28px;height:28px;border-radius:50%;background:var(--accent);color:var(--accent-fg);font-family:var(--mono);font-weight:500;font-size:14px;display:grid;place-items:center}
+.step h2{margin:0;font-size:17px;line-height:1.3;font-weight:600;padding-top:2px}
+.step p{margin:4px 0 0;font-size:15px;color:var(--muted)}
+.stepbody{flex:1;min-width:0;display:flex;flex-direction:column;gap:8px}
+.box{background:var(--block);border:1px solid var(--line);border-radius:8px;padding:10px 12px;font-size:15px;overflow-wrap:anywhere;white-space:pre-wrap}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+button{font:inherit;cursor:pointer}
+.copy{background:var(--accent);color:var(--accent-fg);border:0;border-radius:8px;padding:9px 16px;font-weight:600;font-size:15px;min-height:40px}
+.copy.big{font-size:17px;padding:13px 22px;min-height:50px}
+.copy.ok{background:var(--ok);color:#fff}
+.copy:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.hint{font-size:13px;color:var(--warn)}
+.note{background:var(--warn-soft);border-radius:8px;padding:10px 12px;font-size:14px}
+.note b{font-weight:600}
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:3;background:var(--bg);padding-block:8px;display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.paper{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:20px 22px}
+#article{font-family:Georgia,'Times New Roman',serif;font-size:17px;line-height:1.65;color:var(--fg)}
+#article h2{font-family:var(--sans);font-size:21px;line-height:1.3;margin:26px 0 10px;font-weight:600}
+#article p{margin:0 0 14px}
+#article ol{margin:0 0 14px;padding-left:24px}
+#article li{margin-bottom:6px}
+#article a{color:var(--accent)}
+#article .pic{font-family:var(--sans);font-size:14px;color:var(--warn);background:var(--warn-soft);padding:6px 10px;border-radius:6px;margin:0 0 14px;display:block}
+.tags{display:flex;gap:6px;flex-wrap:wrap}
+.tag{font-family:var(--mono);font-size:13px;background:var(--block);border:1px solid var(--line);border-radius:6px;padding:2px 8px}
+@media (prefers-reduced-motion: reduce){*{transition:none!important}}
+input.link{font:inherit;font-size:15px;width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:8px;background:var(--surface);color:var(--fg);min-height:42px}
+</style>
+
+<main class="wrap">
+  <h1 class="page">Услуги для Kwork и FL.ru: готовые тексты</h1>
+  <p class="lead">Регистрация и размещение услуги на двух биржах. Все тексты без ссылок на сайт: на биржах это часто запрещено. Цены в пакетах ориентиры, поправьте под правила площадки.</p>
+
+  <div class="card">
+    <div class="step"><div class="num">1</div><div class="stepbody">
+      <h2>Kwork: регистрация</h2>
+      <p>Откройте сайт и зарегистрируйтесь как продавец («Стать продавцом» или «Разместить кворк»). Профиль заполните текстом «О себе» ниже. Если на каком-то шаге непонятно, пришлите скриншот.</p>
+      <div class="row"><a class="copy" style="text-decoration:none;display:inline-block" href="https://kwork.ru/" target="_blank" rel="noopener">Открыть kwork.ru</a></div>
+      <p>«О себе»:</p>
+      <div class="box" id="about">Меня зовут Сергей. Делаю карточки товаров для Wildberries, Ozon и Яндекс Маркета: по вашему фото собираю главную карточку и серию из шести инфографических картинок. Работаю с нейросетями и дорабатываю результат вручную. Цифры и надписи на карточках всегда советую сверить с паспортом товара.</div>
+      <div class="row"><button class="copy" type="button" data-for="about">Копировать «О себе»</button><span class="hint"></span></div>
+    </div></div>
+  </div>
+
+  <div class="card">
+    <div class="step"><div class="num">2</div><div class="stepbody">
+      <h2>Kwork: создать кворк</h2>
+      <p>Название:</p>
+      <div class="box" id="title">Сделаю карточку товара для Wildberries и Ozon по вашему фото (инфографика)</div>
+      <div class="row"><button class="copy" type="button" data-for="title">Копировать название</button><span class="hint"></span></div>
+      <p>Описание:</p>
+      <div class="box" id="desc">Сделаю продающие карточки товара для Wildberries, Ozon и Яндекс Маркета по вашему фото. Подойдёт обычный снимок с телефона: студия и идеальный фон не нужны.
+
+Что вы получите
+• Главная карточка с вашим товаром, названием и ключевыми преимуществами. Вертикальный формат 3:4, 1152×1536 пикселей.
+• В пакетах «Стандарт» и «Премиум»: серия из 6 карточек (главная, комплектация или варианты, как пользоваться, для кого, уход или характеристики, размеры).
+• В пакете «Премиум» дополнительно до 3 служебных карточек в подарок.
+Файлы в WebP, при необходимости пришлю в JPG.
+
+Что нужно от вас
+Фото товара, название «как в карточке на маркетплейсе» и пожелания. Если есть образец оформления, который нравится, пришлите его. Если нет, предложу варианты из своей подборки.
+
+Как я работаю
+Собираю карточки с помощью нейросетей и дорабатываю вручную. Если что-то не так, исправляю по вашим замечаниям, число правок указано в пакете.
+
+Важно
+Цифры, размеры и надписи на карточках сверяйте с паспортом товара: нейросеть может подставить правдоподобное значение, поэтому проверка перед загрузкой на маркетплейс обязательна. Присылайте фото только тех товаров, на которые у вас есть права.</div>
+      <div class="row"><button class="copy" type="button" data-for="desc">Копировать описание</button><span class="hint"></span></div>
+      <p>Пакеты (если Kwork предлагает три уровня, впишите так; если минимальная цена выше или ниже, пришлите мне скриншот):</p>
+      <div class="box" id="pk">БАЗОВЫЙ, 500 ₽
+1 главная карточка, 1 правка, срок 1 день.
+
+СТАНДАРТ, 1 500 ₽
+Серия из 6 карточек, 2 правки, срок 2 дня.
+
+ПРЕМИУМ, 2 500 ₽
+Серия из 6 карточек и до 3 служебных карточек в подарок, 3 правки, срок 3 дня.</div>
+      <div class="row"><button class="copy" type="button" data-for="pk">Копировать пакеты</button><span class="hint"></span></div>
+      <p>Теги и ключевые слова:</p>
+      <div class="box" id="kw">карточка товара, инфографика для маркетплейса, дизайн карточки, Wildberries, Ozon, Яндекс Маркет, слайды для карточки, нейросеть</div>
+      <div class="row"><button class="copy" type="button" data-for="kw">Копировать теги</button><span class="hint"></span></div>
+      <p>Картинки для примеров: свои карточки (овощерезка, принтер, кофеварка). Чужие бренды на них можно показывать, пока это ваши тестовые примеры, а не заказы клиентов.</p>
+    </div></div>
+  </div>
+
+  <div class="card">
+    <div class="step"><div class="num">3</div><div class="stepbody">
+      <h2>FL.ru: регистрация и услуга</h2>
+      <p>Зарегистрируйтесь как фрилансер, заполните профиль тем же «О себе». Затем добавьте услугу в разделе инфографики: название, описание и пакеты те же, что для Kwork. Если у FL.ru другое число полей, пришлите скриншот, подгоню.</p>
+      <div class="row"><a class="copy" style="text-decoration:none;display:inline-block" href="https://www.fl.ru/" target="_blank" rel="noopener">Открыть fl.ru</a></div>
+    </div></div>
+  </div>
+
+  <div class="note"><b>Перед отправкой на модерацию:</b> прочитайте в правилах каждой площадки пункты про ссылки и контакты, про оплату только через площадку и про использование нейросетей. Если правила требуют убрать слова «нейросеть» или «ИИ», сначала напишите мне, а не скрывайте это: честно сказать про ИИ лучше, чем потом объяснять.</div>
+</main>
+<script>
+(function(){
+function sel(n){var r=document.createRange();r.selectNodeContents(n);var s=window.getSelection();s.removeAllRanges();s.addRange(r)}
+function flash(b,h,ok){if(ok){var t=b.dataset.t||b.textContent;b.dataset.t=t;b.textContent='Скопировано ✓';b.classList.add('ok');if(h)h.textContent='';setTimeout(function(){b.textContent=t;b.classList.remove('ok')},1800)}else if(h){h.textContent='Текст выделен: нажмите Ctrl+C.'}}
+function fb(n){sel(n);var ok=false;try{ok=document.execCommand('copy')}catch(e){}return ok}
+document.querySelectorAll('button[data-for]').forEach(function(b){
+  var n=document.getElementById(b.dataset.for),h=b.parentNode.querySelector('.hint');
+  b.addEventListener('click',function(){var t=n.innerText;
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(function(){flash(b,h,true)},function(){flash(b,h,fb(n))})}else{flash(b,h,fb(n))}});
+});
+})();
+</script>
