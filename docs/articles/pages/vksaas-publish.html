@@ -1,0 +1,169 @@
+<title>Статья для VKSaaS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: three short steps on top, then the whole article as one block with a single copy button. */
+:root{
+  --bg:#f3f5f4; --surface:#ffffff; --fg:#1c2623; --muted:#5d6a66; --line:#d9dfdc;
+  --accent:#0f6b5c; --accent-fg:#ffffff; --accent-soft:#e1efeb; --warn:#8a5a00; --warn-soft:#fbf0d9; --ok:#1f7a45;
+  --block:#eef2f0;
+  --sans:'IBM Plex Sans',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+  --mono:'IBM Plex Mono',ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#111917; --surface:#18221f; --fg:#e6ece9; --muted:#97a6a1; --line:#2a3834;
+  --accent:#4cc3ac; --accent-fg:#06211b; --accent-soft:#1d3530; --warn:#e7b85a; --warn-soft:#352b14; --ok:#5fcf8c; --block:#1f2c28; color-scheme:dark;}}
+:root[data-theme="dark"]{
+  --bg:#111917; --surface:#18221f; --fg:#e6ece9; --muted:#97a6a1; --line:#2a3834;
+  --accent:#4cc3ac; --accent-fg:#06211b; --accent-soft:#1d3530; --warn:#e7b85a; --warn-soft:#352b14; --ok:#5fcf8c; --block:#1f2c28; color-scheme:dark;}
+body{background:var(--bg);color:var(--fg);font-family:var(--sans);font-size:16px;line-height:1.55;padding-inline:16px;padding-block:24px 56px}
+.wrap{max-width:760px;margin-inline:auto;display:flex;flex-direction:column;gap:16px}
+h1.page{font-size:24px;line-height:1.25;margin:0;font-weight:600;text-wrap:balance}
+.lead{margin:0;color:var(--muted);max-width:62ch}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px;display:flex;flex-direction:column;gap:10px}
+.step{display:flex;gap:12px;align-items:flex-start}
+.num{flex:0 0 auto;width:28px;height:28px;border-radius:50%;background:var(--accent);color:var(--accent-fg);font-family:var(--mono);font-weight:500;font-size:14px;display:grid;place-items:center}
+.step h2{margin:0;font-size:17px;line-height:1.3;font-weight:600;padding-top:2px}
+.step p{margin:4px 0 0;font-size:15px;color:var(--muted)}
+.stepbody{flex:1;min-width:0;display:flex;flex-direction:column;gap:8px}
+.box{background:var(--block);border:1px solid var(--line);border-radius:8px;padding:10px 12px;font-size:15px;overflow-wrap:anywhere;white-space:pre-wrap}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+button{font:inherit;cursor:pointer}
+.copy{background:var(--accent);color:var(--accent-fg);border:0;border-radius:8px;padding:9px 16px;font-weight:600;font-size:15px;min-height:40px}
+.copy.big{font-size:17px;padding:13px 22px;min-height:50px}
+.copy.ok{background:var(--ok);color:#fff}
+.copy:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.hint{font-size:13px;color:var(--warn)}
+.note{background:var(--warn-soft);border-radius:8px;padding:10px 12px;font-size:14px}
+.note b{font-weight:600}
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:3;background:var(--bg);padding-block:8px;display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.paper{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:20px 22px}
+#article{font-family:Georgia,'Times New Roman',serif;font-size:17px;line-height:1.65;color:var(--fg)}
+#article h2{font-family:var(--sans);font-size:21px;line-height:1.3;margin:26px 0 10px;font-weight:600}
+#article p{margin:0 0 14px}
+#article ol{margin:0 0 14px;padding-left:24px}
+#article li{margin-bottom:6px}
+#article a{color:var(--accent)}
+#article .pic{font-family:var(--sans);font-size:14px;color:var(--warn);background:var(--warn-soft);padding:6px 10px;border-radius:6px;margin:0 0 14px;display:block}
+.tags{display:flex;gap:6px;flex-wrap:wrap}
+.tag{font-family:var(--mono);font-size:13px;background:var(--block);border:1px solid var(--line);border-radius:6px;padding:2px 8px}
+@media (prefers-reduced-motion: reduce){*{transition:none!important}}
+</style>
+
+<main class="wrap">
+  <h1 class="page">Статья для VKSaaS: вставить целиком за четыре шага</h1>
+  <p class="lead">Тема «семь вопросов до покупки сервиса для карточек товаров». Текст уникальный, нигде больше не публикуется. Одна ссылка в конце.</p>
+
+  <div class="card">
+    <div class="step"><div class="num">1</div><div class="stepbody">
+      <h2>Откройте VKSaaS</h2>
+      <p>Войдите в свой кабинет и найдите, где добавить статью (раздел «Статьи» или «Блог»). Если не нашли, пришлите скриншот кабинета.</p>
+      <div class="row"><a class="copy" style="text-decoration:none;display:inline-block" href="https://vksaas.ru/" target="_blank" rel="noopener">Открыть vksaas.ru</a></div>
+    </div></div>
+  </div>
+
+  <div class="card">
+    <div class="step"><div class="num">2</div><div class="stepbody">
+      <h2>Заголовок и описание</h2>
+      <div class="box" id="title">Семь вопросов до покупки сервиса для карточек товаров на Wildberries и Ozon</div>
+      <div class="row"><button class="copy" type="button" data-for="title">Копировать заголовок</button><span class="hint"></span></div>
+      <p>Если есть короткое описание, вставьте его. Если нет, пропустите:</p>
+      <div class="box" id="sub">Что спросить у любого сервиса, который собирает карточки по фото, прежде чем платить: от формата картинки до возврата денег.</div>
+      <div class="row"><button class="copy" type="button" data-for="sub">Копировать описание</button><span class="hint"></span></div>
+      <p>Категория: «Маркетплейсы».</p>
+    </div></div>
+  </div>
+
+  <div class="card">
+    <div class="step"><div class="num">3</div><div class="stepbody">
+      <h2>Текст статьи</h2>
+      <p>Нажмите на поле текста, нажмите кнопку ниже и вставьте (Ctrl+V). Две жёлтые строки «Вставьте картинку»: под ними загрузите картинки и удалите сами жёлтые строки. Подойдут шесть карточек кофеварки, те же, что на Product Radar.</p>
+      <div class="row"><button class="copy big" type="button" id="copyArticle">Скопировать всю статью</button><span class="hint" id="articleHint"></span></div>
+    </div></div>
+  </div>
+
+  <div class="card">
+    <div class="step"><div class="num">4</div><div class="stepbody">
+      <h2>Проверьте и опубликуйте</h2>
+      <p>Если ссылка в конце не стала кликабельной, выделите слова «собрать главную карточку» и вставьте адрес:</p>
+      <div class="box" id="url">https://absolutecard.ru/?utm_source=vksaas&utm_medium=article&utm_campaign=sem_voprosov</div>
+      <div class="row"><button class="copy" type="button" data-for="url">Копировать ссылку</button><span class="hint"></span></div>
+      <p>Опубликуйте (или отправьте на проверку, если так устроено) и пришлите мне ссылку или скриншот.</p>
+    </div></div>
+  </div>
+
+  <div class="bar"><span class="lead">Вся статья:</span><button class="copy" type="button" id="copyArticle2">Скопировать всю статью</button><span class="hint" id="articleHint2"></span></div>
+
+  <div class="paper"><div id="article">
+<p>Сервисов, которые собирают карточки товаров по фото, уже много. Выглядят они похоже: загрузил снимок, получил яркую картинку. Разница обнаруживается позже, когда картинку надо поправить, проверить цифры или вернуть деньги. Я делаю такой сервис сам (Cardroom), поэтому знаю, какие вопросы стоит задать любому из них, включая мой. Вот семь.</p>
+
+<h2>1. Что нужно на входе</h2>
+<p>Выясните, какое именно фото принимает сервис. Хороший признак, когда подходит обычный снимок с телефона: без студии, света и идеального фона. Плохой признак, когда в требованиях сначала нужно «подготовить предметную съёмку». Тогда вы просто переносите работу фотографа на себя.</p>
+
+<h2>2. Можно ли увидеть результат до оплаты</h2>
+<p>Самый важный вопрос. Если сервис показывает готовую карточку бесплатно, пусть даже с водяным знаком, вы оцениваете реальное качество, а не примеры с сайта. Спросите, сколько раз можно пересобрать картинку до оплаты и что именно можно менять.</p>
+<span class="pic">Вставьте картинку: главная карточка кофеварки. Эту жёлтую строку удалите.</span>
+
+<h2>3. Из чего состоит серия</h2>
+<p>Одной главной картинки в карточке мало: покупатель листает галерею. Обычно в серии нужны главная, преимущество, устройство или комплектация, размеры и несколько служебных картинок. Уточните, сколько изображений входит в цену и можно ли заказать одну недостающую, а не весь набор заново.</p>
+
+<h2>4. Как исправить одну ошибку</h2>
+<p>Нейросеть ошибается: может дописать лишнее, перепутать надпись или нарисовать лишний предмет. Значит, правка должна быть простой. Проверьте, можно ли поправить картинку одной фразой («убери лишнее», «допиши модель») и ограничено ли число таких правок.</p>
+
+<h2>5. Кто отвечает за цифры и надписи</h2>
+<p>Мощность, размеры, объём, модель: всё это нейросеть может подставить уверенно и неверно. Честный сервис не обещает идеальной точности и прямо говорит, что характеристики нужно сверить с паспортом товара. Если же вам обещают «ничего проверять не нужно», воспринимайте это как предупреждение. За карточку отвечаете вы как продавец.</p>
+<span class="pic">Вставьте картинку: шесть карточек кофеварки рядом. Эту жёлтую строку удалите.</span>
+
+<h2>6. Подходит ли формат площадкам</h2>
+<p>Сверьте размер и пропорции с требованиями вашей площадки. Wildberries, Ozon и Яндекс Маркет описывают их в своих справках, и эти справки обновляются. Мои карточки вертикальные, 3:4, 1152×1536 пикселей, в WebP. Это подходит под вертикальную галерею, но перед загрузкой всё равно откройте справку своей площадки.</p>
+
+<h2>7. Что с деньгами, если не подошло</h2>
+<p>Узнайте условия возврата до оплаты, а не после. Какой срок, при каких условиях возвращают, что считается «получением результата» (например, скачивание файла). И нужна ли регистрация, подписка и автоплатежи: проще, когда платишь за готовую картинку, а не за доступ.</p>
+
+<h2>Как это устроено у меня</h2>
+<p>Чтобы вопросы не были пустыми, вот мои ответы. Фото нужно обычное. Главная карточка собирается бесплатно, с водяным знаком, за пару минут. Её можно один раз пересобрать до оплаты. Без знака она стоит 100 ₽, серия из шести карточек 600 ₽ (500 ₽, если главная уже куплена). После оплаты каждую карточку серии можно перерисовать один раз. Деньги возвращаю, пока файлы не скачаны. Регистрации и подписки нет. Цифры и надписи на карточках проверяйте по паспорту товара: сервис их подставляет сам, и это нужно сверять.</p>
+<p>Чем бы вы ни пользовались, пройдите по этим семи пунктам. Если на большую часть сервис отвечает ясно, с ним можно работать.</p>
+<p>Попробовать мой вариант: <a href="https://absolutecard.ru/?utm_source=vksaas&amp;utm_medium=article&amp;utm_campaign=sem_voprosov">собрать главную карточку</a>. Какого вопроса к таким сервисам здесь не хватает? Напишите в комментариях.</p>
+  </div></div>
+</main>
+
+<script>
+(function(){
+function sel(node){var r=document.createRange();r.selectNodeContents(node);var s=window.getSelection();s.removeAllRanges();s.addRange(r)}
+function flash(btn,hint,ok){
+  if(ok){var t=btn.dataset.t||btn.textContent;btn.dataset.t=t;btn.textContent='Скопировано ✓';btn.classList.add('ok');if(hint)hint.textContent='';setTimeout(function(){btn.textContent=t;btn.classList.remove('ok')},1800)}
+  else if(hint){hint.textContent='Текст выделен: нажмите Ctrl+C.'}
+}
+function copySelected(node){
+  sel(node);var ok=false;try{ok=document.execCommand('copy')}catch(e){}return ok;
+}
+function copyRich(node,btn,hint){
+  var html=node.innerHTML, plain=node.innerText;
+  var done=function(ok){flash(btn,hint,ok)};
+  if(navigator.clipboard&&window.ClipboardItem){
+    try{
+      var item=new ClipboardItem({'text/html':new Blob([html],{type:'text/html'}),'text/plain':new Blob([plain],{type:'text/plain'})});
+      navigator.clipboard.write([item]).then(function(){done(true)},function(){done(copySelected(node))});
+      return;
+    }catch(e){}
+  }
+  done(copySelected(node));
+}
+function copyPlain(node,btn,hint){
+  var text=node.innerText;
+  if(navigator.clipboard&&navigator.clipboard.writeText){
+    navigator.clipboard.writeText(text).then(function(){flash(btn,hint,true)},function(){flash(btn,hint,copySelected(node))});
+  }else{flash(btn,hint,copySelected(node))}
+}
+var art=document.getElementById('article');
+[['copyArticle','articleHint'],['copyArticle2','articleHint2']].forEach(function(p){
+  var b=document.getElementById(p[0]),h=document.getElementById(p[1]);
+  b.addEventListener('click',function(){copyRich(art,b,h)});
+});
+document.querySelectorAll('button[data-for]').forEach(function(b){
+  var node=document.getElementById(b.dataset.for),h=b.parentNode.querySelector('.hint');
+  b.addEventListener('click',function(){copyPlain(node,b,h)});
+});
+})();
+</script>
